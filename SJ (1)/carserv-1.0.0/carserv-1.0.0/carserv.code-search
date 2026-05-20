@@ -1,0 +1,76 @@
+# Query: carserv
+# ContextLines: 1
+
+16 results - 9 files
+
+carserv-1.0.0\404.html:
+   5      <meta charset="utf-8">
+   6:     <title>SJ Car Gas - Car Repair HTML Template</title>
+   7      <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  79          <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+  80:             <h2 class="m-0 text-primary"><i class="fa fa-car me-3"></i>CarServ</h2>
+  81          </a>
+
+carserv-1.0.0\about.html:
+   5      <meta charset="utf-8">
+   6:     <title>CarServ - Car Repair HTML Template</title>
+   7      <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  79          <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+  80:             <h2 class="m-0 text-primary"><i class="fa fa-car me-3"></i>CarServ</h2>
+  81          </a>
+
+carserv-1.0.0\booking.html:
+   5      <meta charset="utf-8">
+   6:     <title>CarServ - Car Repair HTML Template</title>
+   7      <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  79          <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+  80:             <h2 class="m-0 text-primary"><i class="fa fa-car me-3"></i>CarServ</h2>
+  81          </a>
+
+carserv-1.0.0\contact.html:
+   5      <meta charset="utf-8">
+   6:     <title>CarServ - Car Repair HTML Template</title>
+   7      <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  79          <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+  80:             <h2 class="m-0 text-primary"><i class="fa fa-car me-3"></i>CarServ</h2>
+  81          </a>
+
+carserv-1.0.0\index.html:
+   5      <meta charset="utf-8">
+   6:     <title>CarServ - Car Repair HTML Template</title>
+   7      <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  79          <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+  80:             <h2 class="m-0 text-primary"><i class="fa fa-car me-3"></i>CarServ</h2>
+  81          </a>
+
+carserv-1.0.0\READ-ME.txt:
+  1:   =>  Template Name    : CarServ - Car Repair HTML Template
+  2  
+
+carserv-1.0.0\service.html:
+   5      <meta charset="utf-8">
+   6:     <title>CarServ - Car Repair HTML Template</title>
+   7      <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  79          <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+  80:             <h2 class="m-0 text-primary"><i class="fa fa-car me-3"></i>CarServ</h2>
+  81          </a>
+
+carserv-1.0.0\team.html:
+   5      <meta charset="utf-8">
+   6:     <title>CarServ - Car Repair HTML Template</title>
+   7      <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  79          <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+  80:             <h2 class="m-0 text-primary"><i class="fa fa-car me-3"></i>CarServ</h2>
+  81          </a>
+
+carserv-1.0.0\testimonial.html:
+  5      <meta charset="utf-8">
+  6:     <title>CarServ - Car Repair HTML Template</title>
+  7      <meta content="width=device-width, initial-scale=1.0" name="viewport">
