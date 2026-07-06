@@ -684,6 +684,117 @@
 </section>
 <!-- why choose us End -->
 
+<!-- calculator startes  -->
+
+<section class="sj-lpg-calculator-section">
+  <div class="sj-lpg-container">
+
+    <div class="sj-lpg-header">
+      <span>LPG Savings Calculator</span>
+      <h2>LPG vs Petrol / Diesel Profit Calculator</h2>
+      <p>Calculate how much money you can save after fitting LPG gas kit in your car.</p>
+    </div>
+
+    <div class="sj-lpg-grid">
+
+      <div class="sj-lpg-card">
+        <h3>Input Details</h3>
+
+        <label>Current Fuel Type</label>
+        <select id="fuelType">
+          <option value="petrol">Petrol</option>
+          <option value="diesel">Diesel</option>
+        </select>
+
+        <label>Petrol Price / Liter ₹</label>
+        <input type="number" id="petrolPrice" value="105">
+
+        <label>Diesel Price / Liter ₹</label>
+        <input type="number" id="dieselPrice" value="92">
+
+        <label>LPG Price / Kg ₹</label>
+        <input type="number" id="lpgPrice" value="65">
+
+        <label>Current Mileage km/l</label>
+        <input type="number" id="currentMileage" value="16">
+
+        <label>LPG Mileage km/kg</label>
+        <input type="number" id="lpgMileage" value="11">
+
+        <label>Monthly Running km</label>
+        <input type="number" id="monthlyKm" value="1500">
+
+        <label>LPG Kit Installation Cost ₹</label>
+        <input type="number" id="kitCost" value="45000">
+
+        <button onclick="calculateLpgSavings()">Calculate Savings</button>
+      </div>
+
+      <div class="sj-lpg-result-card">
+        <h3>Your Savings Result</h3>
+
+        <div class="sj-save-box">
+          <p>You Save</p>
+          <h2 id="monthlySavings">₹ 0</h2>
+          <span>Every Month</span>
+        </div>
+
+        <div class="sj-result-list">
+          <div>
+            <span>Monthly Petrol/Diesel Cost</span>
+            <b id="oldFuelCost">₹ 0</b>
+          </div>
+
+          <div>
+            <span>Monthly LPG Cost</span>
+            <b id="lpgFuelCost">₹ 0</b>
+          </div>
+
+          <div>
+            <span>Monthly Savings</span>
+            <b id="savingAmount">₹ 0</b>
+          </div>
+
+          <div>
+            <span>Payback Period</span>
+            <b id="payback">0 Months</b>
+          </div>
+
+          <div>
+            <span>Yearly Savings</span>
+            <b id="yearlySavings">₹ 0</b>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="sj-lpg-long-card">
+      <div>
+        <h4 id="fiveYearSaving">₹ 0</h4>
+        <p>5 Years Savings</p>
+      </div>
+
+      <div>
+        <h4 id="tenYearSaving">₹ 0</h4>
+        <p>10 Years Savings</p>
+      </div>
+
+      <div>
+        <h4 id="tenYearKm">0 km</h4>
+        <p>Total KM in 10 Years</p>
+      </div>
+    </div>
+
+    <p class="sj-lpg-note">
+      Note: This calculation is based on average values. Actual savings may vary based on fuel price, driving condition and vehicle condition.
+    </p>
+
+  </div>
+</section>
+
+<!-- calculator ends  -->
+
 
     <!-- Booking Start -->
 <div class="container-fluid bg-secondary booking my-5 wow fadeInUp" data-wow-delay="0.1s">

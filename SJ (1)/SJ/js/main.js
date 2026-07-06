@@ -109,6 +109,57 @@
     });
 
 
+ window.formatMoney = function (value) {
+  if (!isFinite(value)) return "₹ 0";
+  return "₹ " + Math.round(value).toLocaleString("en-IN");
+};
+
+window.calculateLpgSavings = function () {
+  const fuelType = document.getElementById("fuelType")?.value;
+
+  const petrolPrice = Number(document.getElementById("petrolPrice")?.value) || 0;
+  const dieselPrice = Number(document.getElementById("dieselPrice")?.value) || 0;
+  const lpgPrice = Number(document.getElementById("lpgPrice")?.value) || 0;
+  const currentMileage = Number(document.getElementById("currentMileage")?.value) || 0;
+  const lpgMileage = Number(document.getElementById("lpgMileage")?.value) || 0;
+  const monthlyKm = Number(document.getElementById("monthlyKm")?.value) || 0;
+  const kitCost = Number(document.getElementById("kitCost")?.value) || 0;
+
+  if (currentMileage <= 0 || lpgMileage <= 0) {
+    alert("Please enter valid mileage values");
+    return;
+  }
+
+  const currentFuelPrice = fuelType === "petrol" ? petrolPrice : dieselPrice;
+
+  const oldFuelCost = (monthlyKm / currentMileage) * currentFuelPrice;
+  const lpgFuelCost = (monthlyKm / lpgMileage) * lpgPrice;
+  const monthlySavings = oldFuelCost - lpgFuelCost;
+  const yearlySavings = monthlySavings * 12;
+
+  document.getElementById("oldFuelCost").innerText = formatMoney(oldFuelCost);
+  document.getElementById("lpgFuelCost").innerText = formatMoney(lpgFuelCost);
+  document.getElementById("monthlySavings").innerText = formatMoney(monthlySavings);
+  document.getElementById("savingAmount").innerText = formatMoney(monthlySavings);
+  document.getElementById("yearlySavings").innerText = formatMoney(yearlySavings);
+
+  document.getElementById("payback").innerText =
+    monthlySavings > 0 ? (kitCost / monthlySavings).toFixed(1) + " Months" : "No Savings";
+
+  document.getElementById("fiveYearSaving").innerText = formatMoney(yearlySavings * 5);
+  document.getElementById("tenYearSaving").innerText = formatMoney(yearlySavings * 10);
+  document.getElementById("tenYearKm").innerText =
+    (monthlyKm * 12 * 10).toLocaleString("en-IN") + " km";
+};
+
+$(window).on("load", function () {
+  if (document.getElementById("fuelType")) {
+    calculateLpgSavings();
+  }
+});
+
+
+
     // =========================
     // Company Timeline Slider
     // Car stops at every point
