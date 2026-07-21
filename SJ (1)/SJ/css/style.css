@@ -387,6 +387,38 @@
     width: auto;
     max-width: none;           /* remove restriction */
 }
+/* LOGO */
+.logo-img{
+    height:55px;
+    width:auto;
+    object-fit:contain;
+}
+
+
+/* MOBILE LOGO */
+@media(max-width:768px){
+
+    .navbar-brand{
+        padding-left:15px !important;
+        padding-right:0 !important;
+    }
+
+
+    .logo-img{
+
+        height:100px !important;
+        width:auto !important;
+
+    }
+
+
+    .navbar-toggler{
+
+        margin-right:15px;
+
+    }
+
+}
 .navbar {
     padding-top: 15px !important;
     padding-bottom: 15px !important;
@@ -897,7 +929,1009 @@
     height: 120px;
   }
 }
+/* =====================================
+   SJ CAR GAS TIMELINE
+===================================== */
 
+
+.sj-timeline{
+
+    width:100%;
+    background:#fff;
+    padding:90px 40px;
+    overflow:hidden;
+    font-family:Arial,sans-serif;
+    position:relative;
+
+}
+
+
+
+
+/* HEADER */
+
+.sj-head{
+
+    text-align:center;
+    margin-bottom:80px;
+
+}
+
+
+.sj-head span{
+
+    color:#e51d2a;
+    font-weight:700;
+    font-size:15px;
+
+}
+
+
+.sj-head h1{
+
+    font-size:52px;
+    color:#111;
+    margin:15px 0;
+
+}
+
+
+.sj-head h1 b{
+
+    color:#e51d2a;
+
+}
+
+
+.sj-head p{
+
+    color:#666;
+    font-size:18px;
+
+}
+
+
+
+
+/* ROAD WRAPPER */
+
+
+.sj-road-wrap{
+
+    width:100%;
+    height:620px;
+    position:relative;
+
+}
+
+
+
+
+
+/* ROAD */
+
+
+.sj-road{
+
+    position:absolute;
+
+    width:100%;
+
+    top:330px;
+
+    left:0;
+
+}
+
+
+
+.sj-lane{
+
+    width:100%;
+    height:90px;
+
+    background:#222;
+
+    border-radius:60px;
+
+    position:relative;
+
+}
+
+
+
+.sj-lane::after{
+
+
+    content:"";
+
+    position:absolute;
+
+    top:42px;
+
+    left:0;
+
+    width:100%;
+
+    height:6px;
+
+
+    background:
+
+    repeating-linear-gradient(
+
+        90deg,
+
+        #fff 0px,
+
+        #fff 65px,
+
+        transparent 65px,
+
+        transparent 125px
+
+    );
+
+
+}
+
+
+
+
+
+
+
+/* CAR */
+
+
+.sj-car{
+
+    position:absolute;
+
+    left:0;
+
+    top:-60px;
+
+    z-index:20;
+
+    will-change:transform;
+
+}
+
+
+
+.sj-car img{
+
+    width:105px;
+
+    display:block;
+
+}
+
+
+
+
+
+
+
+/* STOP */
+
+
+.sj-stop{
+
+
+    position:absolute;
+
+    top:-240px;
+
+    transform:translateX(-50%);
+
+    text-align:center;
+
+    opacity:0;
+
+    transition:.5s;
+
+    z-index:10;
+
+
+}
+
+
+
+
+/* POSITIONS */
+
+
+.stop1{
+
+    left:12%;
+
+}
+
+
+.stop2{
+
+    left:24%;
+
+}
+
+
+.stop3{
+
+    left:36%;
+
+}
+
+
+.stop4{
+
+    left:48%;
+
+}
+
+
+.stop5{
+
+    left:60%;
+
+}
+
+
+.stop6{
+
+    left:72%;
+
+}
+.stop7{
+
+    left:84%;
+
+}
+.stop8{
+
+    left:95%;
+
+}
+
+
+
+
+
+
+
+.sj-stop.active,
+.sj-stop.reached{
+
+    opacity:1;
+
+}
+
+
+
+
+
+
+
+/* YEAR */
+
+
+.sj-year{
+
+
+    min-width:120px;
+
+    padding:12px 22px;
+
+    background:#111;
+
+    color:#fff;
+
+    font-size:25px;
+
+    font-weight:700;
+
+    border-radius:8px;
+
+
+    box-shadow:
+
+    0 0 25px rgba(229,29,42,.5);
+
+
+}
+
+
+
+
+.sj-stop.reached .sj-year{
+
+
+    background:#e51d2a;
+
+    box-shadow:
+
+    0 0 35px #e51d2a;
+
+
+}
+
+
+
+
+
+
+
+
+/* LINE FROM YEAR */
+
+
+.sj-year::after{
+
+
+    content:"";
+
+    position:absolute;
+
+    height:120px;
+
+    width:3px;
+
+    background:#222;
+
+    left:50%;
+
+    top:100%;
+
+    transform:translateX(-50%);
+
+
+}
+
+
+
+
+
+
+
+/* PIN */
+
+
+.sj-pin{
+
+
+    width:24px;
+
+    height:24px;
+
+    background:white;
+
+    border-radius:50%;
+
+    border:7px solid #e51d2a;
+
+    margin:120px auto 0;
+
+
+    transition:.4s;
+
+
+}
+
+
+
+.sj-stop.reached .sj-pin{
+
+
+    background:#e51d2a;
+
+    transform:scale(1.35);
+
+
+}
+
+
+
+
+
+
+
+
+/* CARD */
+
+
+.sj-card{
+
+
+    position:absolute;
+
+
+    top:310px;
+
+
+    left:50%;
+
+
+    transform:
+
+    translateX(-50%)
+
+    translateY(40px);
+
+
+   width:160px;
+    min-height:75px;
+
+
+    background:white;
+
+
+    padding:18px 10px;
+
+
+    border-radius:12px;
+
+
+    box-shadow:
+
+    0 15px 35px rgba(0,0,0,.15);
+
+
+
+    opacity:0;
+
+
+    transition:.5s;
+
+
+}
+
+
+
+.sj-stop.reached .sj-card{
+
+
+    opacity:1;
+
+
+    transform:
+
+    translateX(-50%)
+
+    translateY(0);
+
+
+}
+
+
+
+
+
+.sj-card h3{
+
+
+    color:#e51d2a;
+
+    font-size:18px;
+
+    margin:0 0 10px;
+
+}
+
+
+
+.sj-card p{
+
+
+    color:#555;
+
+    font-size:14px;
+
+    line-height:1.5;
+
+    margin:0;
+
+}
+
+/* =========================
+ MOBILE HORIZONTAL TIMELINE
+========================= */
+
+@media(max-width:768px){
+
+
+.sj-timeline{
+
+    padding:40px 0 100px;
+
+    overflow:hidden;
+
+}
+
+
+
+
+
+.sj-head{
+
+    padding:0 20px;
+
+    margin-bottom:40px;
+
+}
+
+
+
+.sj-head h1{
+
+    font-size:36px;
+
+}
+
+
+
+
+
+
+/* =====================
+      VIEW AREA
+===================== */
+
+
+.sj-road-wrap{
+
+
+    width:100%;
+
+
+    height:720px;
+
+
+    overflow:hidden;
+
+
+    position:relative;
+
+
+}
+
+
+
+
+
+
+
+/* =====================
+      BIG ROAD
+===================== */
+
+
+.sj-road{
+
+
+    position:absolute;
+
+
+    width:1200px;
+
+
+    height:650px;
+
+
+    left:0;
+
+
+    top:0;
+
+
+}
+
+
+
+
+
+
+
+/* ROAD */
+
+
+.sj-lane{
+
+
+    position:absolute;
+
+
+    width:1200px;
+
+
+    height:90px;
+
+
+    left:0;
+
+
+    top:300px;
+
+
+    border-radius:60px;
+
+
+}
+
+
+
+
+
+.sj-lane::after{
+
+
+    top:42px;
+
+
+    height:6px;
+
+
+}
+
+
+
+
+
+
+
+
+
+/* =====================
+          CAR
+===================== */
+
+
+.sj-car{
+
+
+    position:absolute;
+
+
+    left:60px;
+
+
+    top:245px;
+
+
+    z-index:20;
+
+
+    transform:none;
+
+
+}
+
+
+
+
+
+.sj-car img{
+
+
+    width:125px;
+
+
+    display:block;
+
+
+}
+
+
+
+
+
+
+
+
+
+/* =====================
+          POINTS
+===================== */
+
+
+.sj-stop{
+
+
+    position:absolute!important;
+
+
+    top:70px;
+
+
+    width:120px;
+
+
+    height:500px;
+
+
+    opacity:0;
+
+
+    transform:translateX(-50%);
+
+
+}
+
+
+
+
+
+
+
+.stop1{
+
+    left:60px!important;
+
+}
+
+
+.stop2{
+
+    left:260px!important;
+
+}
+
+
+.stop3{
+
+    left:460px!important;
+
+}
+
+
+.stop4{
+
+    left:660px!important;
+
+}
+
+
+.stop5{
+
+    left:860px!important;
+
+}
+
+
+.stop6{
+
+    left:1060px!important;
+
+}
+
+
+
+
+
+
+
+
+
+/* =====================
+          YEAR
+===================== */
+
+
+.sj-year{
+
+
+    min-width:110px;
+
+
+    padding:12px 18px;
+
+
+    font-size:22px;
+
+
+    margin:auto;
+
+
+}
+
+
+
+
+
+
+.sj-year::after{
+
+
+    height:110px;
+
+
+}
+
+
+
+
+
+
+
+/* PIN */
+
+
+.sj-pin{
+
+
+    margin-top:110px;
+
+
+}
+
+
+
+
+
+
+
+
+
+/* =====================
+          CARD
+===================== */
+
+
+.sj-card{
+
+
+    position:absolute;
+
+
+    top:390px;
+
+
+    left:60px!important;
+
+
+    width:260px;
+
+
+    min-height:140px;
+
+
+    padding:22px 18px;
+
+
+    box-sizing:border-box;
+
+
+    background:#fff;
+
+
+    border-radius:14px;
+
+
+    box-shadow:
+
+
+    0 15px 35px rgba(0,0,0,.15);
+
+
+
+    transform:
+
+
+    translateX(-50%)
+
+    translateY(50px);
+
+
+
+}
+
+
+
+
+
+.sj-card h3{
+
+
+    font-size:20px;
+
+
+}
+
+
+
+.sj-card p{
+
+
+    font-size:15px;
+
+
+}
+
+
+
+
+
+
+
+
+.sj-stop.reached .sj-card{
+
+
+    opacity:1;
+
+
+    transform:
+
+
+    translateX(-50%)
+
+    translateY(0);
+
+
+
+}
+
+
+
+
+
+
+
+
+
+/* LAST CARD FIX */
+
+
+.stop6 .sj-card{
+
+
+    left:0!important;
+
+
+}
+
+
+
+
+
+
+
+.sj-stop.reached.stop6 .sj-card{
+
+
+    transform:
+
+
+    translateX(-50%)
+
+    translateY(0);
+
+
+
+}
+
+
+
+
+
+
+
+
+/* EXTRA SPACE */
+
+
+.stop6{
+
+
+    padding-bottom:350px;
+
+
+}
+
+
+
+
+}
 .sj-why-section {
   position: relative;
   padding: 80px 0;
@@ -3045,4 +4079,276 @@ max-width:100px;
     height: auto;       /* adjust height proportionally */
     object-fit: contain;
     transition: 0.5s ease;
+}
+/* ==========================
+   FOOTER SERVICES MOBILE FIX
+========================== */
+
+@media (max-width:768px){
+
+    .footer-services{
+
+        width:100% !important;
+        max-width:100% !important;
+
+        padding-left:25px !important;
+        padding-right:25px !important;
+
+        margin:0 !important;
+
+    }
+
+
+    .footer-services h4{
+
+        text-align:center !important;
+
+        margin-bottom:20px !important;
+
+    }
+
+
+    .footer-services .btn.btn-link{
+
+        width:100% !important;
+
+        display:flex !important;
+
+        justify-content:flex-start !important;
+
+        align-items:center !important;
+
+        padding:6px 80px !important;
+
+        
+
+        text-align:center !important;
+
+        font-size:15px;
+
+    }
+
+
+    .footer-services .btn.btn-link::before{
+
+        flex:0 0 15px;
+
+        margin-right:10px !important;
+
+    }
+
+}
+/* ==========================
+   MOBILE CAR POSITION FIX
+========================== */
+
+@media(max-width:767px){
+
+    .mobile-car{
+
+        width:100% !important;
+
+        height:130px !important;
+
+        display:flex !important;
+
+        justify-content:center !important;
+
+        align-items:center !important;
+
+        overflow:hidden !important;
+
+        margin:10px auto 15px !important;
+
+        padding:0 !important;
+
+    }
+
+
+    .mobile-car img{
+
+        position:static !important;
+
+        width:230px !important;
+
+        height:130px !important;
+
+        max-width:none !important;
+
+        object-fit:contain !important;
+
+  transform:scale(1) !important;
+
+    }
+
+
+}
+/* MOBILE CAR SLIDER */
+
+.mobile-car{
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    width:100%;
+    height:180px;
+
+    overflow:visible;
+
+}
+
+
+.mobile-car img{
+
+    width:260px;
+    height:150px;
+
+    object-fit:contain;
+
+    transition:
+    opacity .3s ease,
+    transform .5s ease;
+
+    transform-origin:center center;
+
+}
+/* =================================
+   LPG CALCULATOR 3 CARD ROW
+================================= */
+
+.sj-lpg-grid{
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+    align-items:start;
+
+}
+
+
+.sj-lpg-card{
+
+    background:#fff;
+
+    padding:20px 18px;
+
+    border-radius:15px;
+
+    box-shadow:0 8px 25px rgba(0,0,0,0.08);
+
+}
+
+
+.sj-lpg-card label{
+
+    font-size:13px;
+    font-weight:700;
+    margin-bottom:6px;
+
+}
+
+
+.sj-lpg-card input{
+
+    height:42px;
+
+    padding:8px 12px;
+
+    border-radius:8px;
+
+    font-size:14px;
+
+}
+
+
+.sj-lpg-card button{
+
+    height:42px;
+
+    border-radius:8px;
+
+    font-size:14px;
+
+}
+
+
+
+/* Note box same row */
+
+.sj-lpg-note{
+
+    grid-column:span 1;
+
+    background:#fff4cf;
+
+    padding:18px;
+
+    border-radius:12px;
+
+    font-size:13px;
+
+}
+
+
+
+/* Tablet */
+
+@media(max-width:991px){
+
+    .sj-lpg-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+
+
+/* Mobile */
+
+@media(max-width:600px){
+
+    .sj-lpg-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+.sj-result{
+
+    margin-top:15px;
+
+    padding:15px;
+
+    background:#f8f9fa;
+
+    border-radius:10px;
+
+    border-left:4px solid #e50914;
+
+}
+
+
+.sj-result h4{
+
+    margin:0 0 10px;
+
+    color:#e50914;
+
+    font-size:18px;
+
+}
+
+
+.sj-result p{
+
+    margin:8px 0;
+
+    font-size:14px;
+
+    color:#444;
+
 }
