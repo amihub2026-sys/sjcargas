@@ -4400,3 +4400,62 @@ max-width:100px;
     cursor:pointer;
 
 }
+@media(max-width:768px){
+
+.sj-timeline{
+    overflow:hidden;
+    width:100%;
+}
+
+
+.sj-road-wrap{
+    width:100%;
+    overflow:hidden;
+}
+
+
+.sj-road{
+
+    transform-origin:left center;
+
+}
+
+
+/* reduce mobile road size */
+
+.sj-lane{
+
+    width:900px;
+
+}
+
+
+/* move stops inside view */
+
+.sj-stop{
+
+    transform:scale(0.85);
+
+}
+
+
+.sj-card{
+
+    width:140px;
+
+    font-size:12px;
+
+}
+
+
+
+.sj-year{
+
+    font-size:18px;
+
+    padding:8px 18px;
+
+}
+
+
+}
