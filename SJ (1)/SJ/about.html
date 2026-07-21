@@ -892,7 +892,7 @@ Start Silver Service,CNG Direct Installation Kit
 
 
     <!-- OPENING HOURS -->
-    <div class="col-lg-4 col-md-6">
+     <div class="col-lg-4 col-md-6">
 
         <h4 class="text-light mb-4">
             Opening Hours
@@ -900,20 +900,20 @@ Start Silver Service,CNG Direct Installation Kit
 
 
         <h6 class="text-light">
-            Monday - Friday:
+            Monday -  Saturday:
         </h6>
 
         <p>
-            09.00 AM - 09.00 PM
+            09.30 AM - 07.00 PM
         </p>
 
 
         <h6 class="text-light">
-            Saturday - Sunday:
+             Sunday
         </h6>
 
         <p>
-            09.00 AM - 12.00 PM
+            Closed
         </p>
 
     </div>
@@ -1184,18 +1184,30 @@ function createAnimation(){
 
 if(isMobile()){
 
+console.log(mobilePositions);
+const roadWidth = document.querySelector(".sj-lane").offsetWidth;
+
+const screenWidth = window.innerWidth;
 
 
-const mobilePositions=[
-0,
--200,
--400,
--600,
--800,
--1000,
--1200,
--1400
-];
+const totalMove = roadWidth - screenWidth;
+
+
+
+const mobilePositions = [];
+
+
+stops.forEach((stop,index)=>{
+
+
+    let pos =
+    -(totalMove * index / (stops.length - 1));
+
+
+    mobilePositions.push(pos);
+
+
+});
 
 
 
@@ -1204,42 +1216,27 @@ stops.forEach((stop,index)=>{
 
 timeline.to(road,{
 
-
     x:mobilePositions[index],
 
-
     duration:2,
-
 
     ease:"power2.inOut",
 
 
-
     onStart:()=>{
-
 
         resetStops();
 
-
-        stop.classList.add(
-            "active"
-        );
-
+        stop.classList.add("active");
 
     },
 
 
-
     onComplete:()=>{
 
-
-        stop.classList.add(
-            "reached"
-        );
-
+        stop.classList.add("reached");
 
     }
-
 
 
 })
@@ -1252,45 +1249,28 @@ duration:1.5
 });
 
 
-
 });
 
-
-
-
-
-// RETURN
 
 
 timeline.to(road,{
 
-
 x:0,
-
 
 duration:3,
 
-
 ease:"power3.inOut",
-
-
 
 onStart:()=>{
 
-
 resetStops();
 
-
 }
-
-
 
 });
 
 
-
 }
-
 
 
 
@@ -1430,10 +1410,7 @@ ease:"power3.inOut",
 
 
 
-onStart:()=>{
-
-
-resetStops();
+onStart:()=>{resetStops();
 
 
 
