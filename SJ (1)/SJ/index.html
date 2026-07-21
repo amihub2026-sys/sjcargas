@@ -825,7 +825,7 @@ data-bs-slide="next">
           <div class="sj-circle-ring ring-two"></div>
 
           <div class="sj-main-image-box">
-            <img src="img/about.jpg" alt="SJ Car Gas" class="img-fluid">
+            <img src="img/why choose.jpg" alt="SJ Car Gas" class="img-fluid">
 
             <div class="sj-floating-badge badge-top">
               <i class="fa fa-check-circle"></i> Trusted Service
@@ -1208,7 +1208,7 @@ Read More...
                 <div class="testimonial-text bg-light text-center p-4">
 
                    <p class="testimonial-content">
-                      I should appreciate Both the partners Mr.Nagarajan and Mr.Jegathesan for their skill and experience in car gas conversion; Iam having a Tata Indica Xeta 2006 model and converted it to LPG long back, had a upturned complaint for years to together, no one turned in on in Madurai, finally I approached them , by seeing their online presence - And they made it, now Iam peacefully driving my car. Thank you so much !
+                      I should appreciate  Mr.Nagarajan for their skill and experience in car gas conversion; Iam having a Tata Indica Xeta 2006 model and converted it to LPG long back, had a upturned complaint for years to together, no one turned in on in Madurai, finally I approached them , by seeing their online presence - And they made it, now Iam peacefully driving my car. Thank you so much !
                     </p>
 <a href="#" class="read-more">
 Read More...
@@ -1896,6 +1896,37 @@ document.getElementById("cngDistance").value
 
 
 }
+document.querySelectorAll(".read-more").forEach(button=>{
+
+
+    button.addEventListener("click",function(e){
+
+        e.preventDefault();
+
+
+        let text =
+        this.previousElementSibling;
+
+
+        text.classList.toggle("show");
+
+
+        if(text.classList.contains("show")){
+
+            this.innerHTML="Read Less...";
+
+        }
+        else{
+
+            this.innerHTML="Read More...";
+
+        }
+
+
+    });
+
+
+});
 
 </script>
 </body>
