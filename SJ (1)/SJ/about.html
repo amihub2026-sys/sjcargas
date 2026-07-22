@@ -430,7 +430,7 @@ A journey of dedication, innovation and growth.
 
 <div class="sj-car">
 
-<img src="img/logo1.png">
+<img src="img/car.png">
 
 </div>
 
@@ -1010,7 +1010,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const track = document.getElementById("timelineTrack");
     const slides = document.querySelectorAll(".timeline-slide");
     const indicators = document.querySelectorAll(".timeline-indicator");
-    const movingCar = document.getElementById("movingRoadCar");
+   const movingCar = document.querySelector(".sj-car");
     const slider = document.getElementById("roadTimelineSlider");
 
     let currentSlide = 0;
@@ -1181,42 +1181,35 @@ function createAnimation(){
 // =================================
 // MOBILE HORIZONTAL
 // =================================
-
 if(isMobile()){
 
-console.log(mobilePositions);
-const roadWidth = document.querySelector(".sj-lane").offsetWidth;
 
-const screenWidth = window.innerWidth;
-
-
-const totalMove = roadWidth - screenWidth;
+    const road = document.querySelector(".sj-road");
+    const lane = document.querySelector(".sj-lane");
 
 
-
-const mobilePositions = [];
-
-
-stops.forEach((stop,index)=>{
-
-
-    let pos =
-    -(totalMove * index / (stops.length - 1));
+    // reset road position
+    gsap.set(road,{
+        x:0
+    });
 
 
-    mobilePositions.push(pos);
-
-
-});
+    const roadWidth = lane.offsetWidth;
+    const screenWidth = window.innerWidth;
 
 
 
-stops.forEach((stop,index)=>{
+    stops.forEach((stop,index)=>{
 
 
-timeline.to(road,{
+        // exact stop position
+        let stopPosition = stop.offsetLeft;
 
-    x:mobilePositions[index],
+
+
+        timeline.to(car,{
+
+    x: stopPosition - (car.offsetWidth / 2),
 
     duration:2,
 
@@ -1242,42 +1235,66 @@ timeline.to(road,{
 })
 
 
-.to({},{
 
-duration:1.5
+        // move road together
+        .to(road,{
 
-});
+            x: -(stopPosition ),
+
+            duration:2,
+
+            ease:"power2.inOut"
 
 
-});
+        },"<")
 
 
 
-timeline.to(road,{
+        // waiting time at stop
+        .to({},{
 
-x:0,
+            duration:3
 
-duration:3,
+        });
 
-ease:"power3.inOut",
 
-onStart:()=>{
 
-resetStops();
+    });
+
+
+
+    // return back to start
+
+    timeline.to(car,{
+
+        x:0,
+
+        duration:3,
+
+        ease:"power3.inOut",
+
+        onStart:()=>{
+
+            resetStops();
+
+        }
+
+    })
+
+
+    .to(road,{
+
+        x:0,
+
+        duration:3,
+
+        ease:"power3.inOut"
+
+    },"<");
+
+
 
 }
-
-});
-
-
-}
-
-
-
-
-
-
-
 
 // =================================
 // DESKTOP HORIZONTAL
