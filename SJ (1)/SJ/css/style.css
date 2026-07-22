@@ -1712,13 +1712,23 @@ transform-origin:center;
 
 
 
-
-
 .sj-year::after{
 
+    content:"";
 
-    height:110px;
+    position:absolute;
 
+    height:100px;   /* mobile line height */
+
+    width:3px;
+
+    background:#222;
+
+    left:50%;
+
+    top:35%;
+
+    transform:translateX(-50%);
 
 }
 
@@ -1758,13 +1768,13 @@ transform-origin:center;
     position:absolute;
 
 
-    top:390px;
+    top:320px;
 
 
-    left:60px!important;
+    left:90px!important;
 
 
-    width:260px;
+    width:160px;
 
 
     min-height:140px;
@@ -1803,22 +1813,11 @@ transform-origin:center;
 
 
 
-
-.sj-card h3{
-
-
-    font-size:20px;
-
-
-}
-
-
-
 .sj-card p{
 
 
     font-size:15px;
-
+    
 
 }
 
@@ -1854,16 +1853,8 @@ transform-origin:center;
 
 
 
-/* LAST CARD FIX */
 
 
-.stop6 .sj-card{
-
-
-    left:0!important;
-
-
-}
 
 
 
@@ -1881,24 +1872,6 @@ transform-origin:center;
 
     translateY(0);
 
-
-
-}
-
-
-
-
-
-
-
-
-/* EXTRA SPACE */
-
-
-.stop6{
-
-
-    padding-bottom:350px;
 
 
 }
@@ -4429,13 +4402,6 @@ html,body{
 }
 
 
-.sj-card{
-
-    width:140px;
-
-    font-size:12px;
-
-}
 
 
 
@@ -4449,3 +4415,4 @@ html,body{
 
 
 }
+
