@@ -4023,8 +4023,8 @@ max-width:100px;
 
 .car-slider-img {
     width: 100%;        /* take full width of parent */
-    max-width: 520px;   /* limit maximum width */
-    height: auto;       /* adjust height proportionally */
+    /* max-width: 520px;   limit maximum width */
+    height: 300px;       /* adjust height proportionally */
     object-fit: contain;
     transition: 0.5s ease;
 }
