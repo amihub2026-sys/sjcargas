@@ -4820,3 +4820,381 @@ body.gallery-modal-open {
     transform:translateY(-5px);
 
 }
+.sj-environment-section{
+
+    padding:90px 20px;
+
+    background:#ffffff;
+
+}
+
+
+.sj-environment-container{
+
+    max-width:1200px;
+
+    margin:auto;
+
+}
+
+
+/* HEADER */
+
+.sj-environment-header{
+
+    text-align:center;
+
+    margin-bottom:60px;
+
+}
+
+
+.sj-environment-header span{
+
+    color:#e51d2a;
+
+    font-size:14px;
+
+    font-weight:700;
+
+    letter-spacing:2px;
+
+}
+
+
+
+.sj-environment-header h2{
+
+    font-size:44px;
+
+    color:#111;
+
+    margin:15px 0;
+
+    font-weight:700;
+
+}
+
+
+.sj-environment-header h2 b{
+
+    color:#e51d2a;
+
+}
+
+
+.sj-environment-header p{
+
+    max-width:750px;
+
+    margin:auto;
+
+    color:#666;
+
+    font-size:17px;
+
+    line-height:1.7;
+
+}
+
+
+
+
+
+/* BENEFIT CARDS */
+
+
+.sj-benefit-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:30px;
+
+}
+
+
+
+.sj-benefit-card{
+
+    background:#fff;
+
+    padding:35px;
+
+    border-radius:18px;
+
+    border:1px solid #eee;
+
+    box-shadow:
+
+    0 10px 30px rgba(0,0,0,.08);
+
+    transition:.3s ease;
+
+}
+
+
+
+.sj-benefit-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:
+
+    0 20px 45px rgba(0,0,0,.12);
+
+}
+
+
+
+.sj-benefit-icon{
+
+    width:60px;
+
+    height:60px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:#fff1f2;
+
+    font-size:30px;
+
+    margin-bottom:20px;
+
+}
+
+
+
+.sj-benefit-card h3{
+
+    color:#111;
+
+    font-size:23px;
+
+    margin-bottom:20px;
+
+}
+
+
+
+.sj-benefit-card li{
+
+    color:#555;
+
+    margin-bottom:12px;
+
+    line-height:1.6;
+
+}
+
+
+
+
+
+
+
+/* COMPARISON TABLE */
+
+
+.sj-comparison{
+
+    margin-top:70px;
+
+}
+
+
+.sj-comparison h3{
+
+    text-align:center;
+
+    color:#111;
+
+    font-size:30px;
+
+    margin-bottom:30px;
+
+}
+
+
+
+.sj-table{
+
+    border-radius:15px;
+
+    overflow:hidden;
+
+    box-shadow:
+
+    0 10px 30px rgba(0,0,0,.08);
+
+}
+
+
+
+.sj-row{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr 1fr;
+
+    padding:18px;
+
+    background:#fff;
+
+    border-bottom:1px solid #eee;
+
+    color:#555;
+
+}
+
+
+
+.sj-head-row{
+
+    background:#111;
+
+    color:#fff;
+
+    font-weight:600;
+
+}
+
+
+
+
+
+
+
+/* FINAL BENEFITS */
+
+
+.sj-final-benefits{
+
+    margin-top:70px;
+
+    text-align:center;
+
+}
+
+
+
+.sj-final-benefits h3{
+
+    font-size:30px;
+
+    color:#111;
+
+}
+
+
+
+.sj-benefit-list{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    justify-content:center;
+
+    gap:15px;
+
+    margin-top:30px;
+
+}
+
+
+
+.sj-benefit-list span{
+
+    padding:12px 22px;
+
+    border-radius:30px;
+
+    background:#f7f7f7;
+
+    color:#333;
+
+    border:1px solid #eee;
+
+    transition:.3s;
+
+}
+
+
+
+.sj-benefit-list span:hover{
+
+    background:#e51d2a;
+
+    color:#fff;
+
+}
+
+
+
+.sj-final-benefits p{
+
+    max-width:850px;
+
+    margin:30px auto 0;
+
+    color:#666;
+
+    line-height:1.8;
+
+}
+
+
+
+
+
+
+
+@media(max-width:768px){
+
+
+.sj-environment-section{
+
+    padding:60px 15px;
+
+}
+
+
+.sj-environment-header h2{
+
+    font-size:32px;
+
+}
+
+
+.sj-benefit-grid{
+
+    grid-template-columns:1fr;
+
+}
+
+
+.sj-benefit-card{
+
+    padding:25px;
+
+}
+
+
+.sj-row{
+
+    font-size:12px;
+
+    padding:12px 8px;
+
+}
+
+
+}
