@@ -308,3 +308,134 @@ function closeLightbox() {
     document.getElementById("lightboxImg").src = "";
     document.body.style.overflow = "auto";
 }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const galleryTrack = document.querySelector(".technician-track");
+    const gallerySlides = document.querySelectorAll(".technician-slide");
+
+    const galleryModal = document.getElementById("galleryModal");
+    const galleryModalImage = document.getElementById("galleryModalImage");
+    const galleryModalClose = document.getElementById("galleryModalClose");
+
+
+    /*
+    =================================
+    OPEN THE IMAGE POPUP
+    =================================
+    */
+
+    gallerySlides.forEach(function (slide) {
+      const image = slide.querySelector("img");
+
+      slide.addEventListener("click", function () {
+        galleryModalImage.src = image.src;
+        galleryModalImage.alt = image.alt || "Gallery image";
+
+        galleryModal.classList.add("active");
+        galleryModal.setAttribute("aria-hidden", "false");
+
+        document.body.classList.add("gallery-modal-open");
+
+        // Stop slider while popup is open
+        galleryTrack.classList.add("gallery-paused");
+      });
+
+
+      /*
+      =================================
+      MOBILE TOUCH PAUSE
+      =================================
+      */
+
+      slide.addEventListener(
+        "touchstart",
+        function () {
+          galleryTrack.classList.add("gallery-paused");
+        },
+        {
+          passive: true
+        }
+      );
+
+      slide.addEventListener(
+        "touchend",
+        function () {
+          /*
+          Small delay allows the click event
+          to open the image popup correctly.
+          */
+          setTimeout(function () {
+            if (!galleryModal.classList.contains("active")) {
+              galleryTrack.classList.remove("gallery-paused");
+            }
+          }, 250);
+        },
+        {
+          passive: true
+        }
+      );
+
+      slide.addEventListener(
+        "touchcancel",
+        function () {
+          galleryTrack.classList.remove("gallery-paused");
+        },
+        {
+          passive: true
+        }
+      );
+    });
+
+
+    /*
+    =================================
+    CLOSE THE IMAGE POPUP
+    =================================
+    */
+
+    function closeGalleryModal() {
+      galleryModal.classList.remove("active");
+      galleryModal.setAttribute("aria-hidden", "true");
+
+      galleryModalImage.src = "";
+
+      document.body.classList.remove("gallery-modal-open");
+
+      // Continue moving after popup closes
+      galleryTrack.classList.remove("gallery-paused");
+    }
+
+
+    // Close button
+   if (galleryModalClose) {
+
+    galleryModalClose.addEventListener("click", function () {
+        closeGalleryModal();
+    });
+
+}
+
+
+    // Close when clicking outside the image
+    if (galleryModal) {
+
+    galleryModal.addEventListener("click", function (event) {
+
+        if (event.target === galleryModal) {
+            closeGalleryModal();
+        }
+
+    });
+
+}
+
+    // Close using Esc key
+    document.addEventListener("keydown", function (event) {
+      if (
+        event.key === "Escape" &&
+        galleryModal.classList.contains("active")
+      ) {
+        closeGalleryModal();
+      }
+    });
+  });

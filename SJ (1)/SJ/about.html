@@ -412,7 +412,6 @@ Company <b>Timeline</b>
 <p>
 A journey of dedication, innovation and growth.
 </p>
-
 </div>
 
 
@@ -640,15 +639,12 @@ Start Silver Drive (25th Year) CNG Kit Installation
 
 
 </div>
-
+<div class="touch-car-hint">
+    <span>Touch the car to start the journey</span>
+</div>
 
 </section>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-
-<script src="sj-timeline.js"></script>
 
 <!-- time line 2 end  -->
 <!-- Timeline End -->
@@ -1000,25 +996,47 @@ Start Silver Drive (25th Year) CNG Kit Installation
     <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
     <!-- Template Javascript -->
-    <script src="js/main.js"></script>
- <script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<script src="js/main.js"></script>
+
+<script>
 document.addEventListener("DOMContentLoaded", function () {
+
+    /*
+    Your first timeline slider code.
+    Important:
+    Do not select .sj-car here.
+    */
+
     const track = document.getElementById("timelineTrack");
     const slides = document.querySelectorAll(".timeline-slide");
     const indicators = document.querySelectorAll(".timeline-indicator");
-   const movingCar = document.querySelector(".sj-car");
-    const slider = document.getElementById("roadTimelineSlider");
+
+    const movingCar =
+        document.querySelector(".timeline-slider-car");
+
+    const slider =
+        document.getElementById("roadTimelineSlider");
 
     let currentSlide = 0;
     let autoSlide;
 
     function moveCar(index) {
-        if (!movingCar || !slider || slides.length <= 1) return;
+
+        if (!movingCar || !slider || slides.length <= 1) {
+            return;
+        }
 
         const sliderWidth = slider.offsetWidth;
         const start = 24;
         const end = sliderWidth - 24;
-        const leftPos = start + ((end - start) * index / (slides.length - 1));
+
+        const leftPos =
+            start +
+            ((end - start) * index / (slides.length - 1));
 
         movingCar.classList.add("moving");
         movingCar.style.left = leftPos + "px";
@@ -1029,7 +1047,13 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function showSlide(index) {
-        track.style.transform = "translateX(-" + (index * 100) + "%)";
+
+        if (!track) {
+            return;
+        }
+
+        track.style.transform =
+            "translateX(-" + (index * 100) + "%)";
 
         indicators.forEach(function (dot) {
             dot.classList.remove("active");
@@ -1043,11 +1067,18 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function nextSlide() {
-        currentSlide = (currentSlide + 1) % slides.length;
+        currentSlide =
+            (currentSlide + 1) % slides.length;
+
         showSlide(currentSlide);
     }
 
     function startAutoSlide() {
+
+        if (slides.length <= 1) {
+            return;
+        }
+
         autoSlide = setInterval(nextSlide, 3000);
     }
 
@@ -1057,6 +1088,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     indicators.forEach(function (indicator, index) {
+
         indicator.addEventListener("click", function () {
             currentSlide = index;
             showSlide(currentSlide);
@@ -1071,441 +1103,170 @@ document.addEventListener("DOMContentLoaded", function () {
     showSlide(currentSlide);
     startAutoSlide();
 });
+
+
+/* =====================================
+   CLICK-BASED ROAD TIMELINE
+===================================== */
+
 gsap.registerPlugin(ScrollTrigger);
 
-
-
 const car = document.querySelector(".sj-car");
-
 const road = document.querySelector(".sj-road");
-
+const lane = document.querySelector(".sj-lane");
+const roadWrap = document.querySelector(".sj-road-wrap");
 const stops = document.querySelectorAll(".sj-stop");
 
+let currentStop = -1;
+let isMoving = false;
 
-let timeline;
-
-
-
-
-
-function isMobile(){
-
+function isMobile() {
     return window.innerWidth <= 768;
-
 }
 
+function resetStops() {
 
-
-
-
-function resetStops(){
-
-    stops.forEach(stop=>{
-
-
-        stop.classList.remove(
-            "active",
-            "reached"
-        );
-
-
+    stops.forEach(function (stop) {
+        stop.classList.remove("active", "reached");
     });
-
-
 }
 
+function moveToStop(index, animate = true) {
 
-
-
-
-
-
-
-function createAnimation(){
-
-
-
-    if(timeline){
-
-        timeline.kill();
-
+    if (
+        !car ||
+        !road ||
+        !lane ||
+        !roadWrap ||
+        !stops[index] ||
+        isMoving
+    ) {
+        return;
     }
 
-
-
+    const stop = stops[index];
 
     resetStops();
+    stop.classList.add("active");
 
+    isMoving = true;
 
+    const duration = animate ? 1.5 : 0;
+if (isMobile()) {
 
-    // reset positions
+    const viewportWidth = roadWrap.clientWidth;
+    const stopCenter = stop.offsetLeft;
 
-  gsap.set(car,{
-    x:-car.offsetWidth / 2,
-    y:0
-});
+    /*
+      Allow positive movement for the first stops.
+      Do not clamp roadX to zero.
+    */
+    const roadX =
+        (viewportWidth / 2) - stopCenter;
 
+    car.classList.add("moving");
 
-    gsap.set(road,{
+    gsap.to(road, {
+        x: roadX,
+        duration: duration,
+        ease: "power2.inOut",
+        overwrite: true,
 
-        x:0
+        onComplete: function () {
 
+            car.classList.remove("moving");
+
+            stop.classList.remove("active");
+            stop.classList.add("reached");
+
+            isMoving = false;
+        }
     });
 
+}
 
+    else {
 
+        const stopPosition = stop.offsetLeft;
 
+        const carPosition =
+            stopPosition - (car.offsetWidth / 2);
 
+        gsap.to(car, {
+            x: carPosition,
+            duration: duration,
+            ease: "power2.inOut",
+            overwrite: true,
 
+            onComplete: function () {
+                stop.classList.remove("active");
+                stop.classList.add("reached");
+                isMoving = false;
+            }
+        });
+    }
+}
 
-    timeline = gsap.timeline({
+function setTimelinePosition() {
 
-        paused:true,
-
-        repeat:-1,
-
-        repeatDelay:2
-
-    });
-
-
-
-
-
-
-
-// =================================
-// MOBILE HORIZONTAL
-// =================================
-if(isMobile()){
-
-
-    const road = document.querySelector(".sj-road");
-    const lane = document.querySelector(".sj-lane");
-
-
-    // reset road position
-    gsap.set(road,{
-        x:0
-    });
-
-
-    const roadWidth = lane.offsetWidth;
-    const screenWidth = window.innerWidth;
-
-
-
-    stops.forEach((stop,index)=>{
-
-
-        // exact stop position
-        let stopPosition = stop.offsetLeft;
-
-
-
-        timeline.to(car,{
-
-    x: stopPosition - (car.offsetWidth / 2),
-
-    duration:2,
-
-    ease:"power2.inOut",
-
-
-    onStart:()=>{
-
-        resetStops();
-
-        stop.classList.add("active");
-
-    },
-
-
-    onComplete:()=>{
-
-        stop.classList.add("reached");
-
+    if (!car || !road) {
+        return;
     }
 
+    gsap.killTweensOf(car);
+    gsap.killTweensOf(road);
 
-})
+    isMoving = false;
 
-
-
-        // move road together
-        .to(road,{
-
-            x: -(stopPosition ),
-
-            duration:2,
-
-            ease:"power2.inOut"
-
-
-        },"<")
-
-
-
-        // waiting time at stop
-        .to({},{
-
-            duration:3
-
-        });
-
-
-
+    gsap.set(car, {
+        x: 0
     });
 
+    if (currentStop < 0) {
+        gsap.set(road, {
+            x: 0
+        });
+    }
 
+    if (currentStop >= 0) {
+        moveToStop(currentStop, false);
+    } else {
+        resetStops();
+    }
+}
+if (car) {
 
-    // return back to start
+    car.style.cursor = "pointer";
+    car.style.pointerEvents = "auto";
 
-    timeline.to(car,{
+    car.addEventListener("click", function (event) {
 
-        x:0,
+        event.preventDefault();
+        event.stopPropagation();
 
-        duration:3,
-
-        ease:"power3.inOut",
-
-        onStart:()=>{
-
-            resetStops();
-
+        if (isMoving) {
+            return;
         }
 
-    })
+        currentStop =
+            (currentStop + 1) % stops.length;
 
-
-    .to(road,{
-
-        x:0,
-
-        duration:3,
-
-        ease:"power3.inOut"
-
-    },"<");
-
-
-
+        moveToStop(currentStop, true);
+    });
 }
 
-// =================================
-// DESKTOP HORIZONTAL
-// =================================
+setTimelinePosition();
 
+let timelineResizeTimer;
 
-else{
+window.addEventListener("resize", function () {
 
+    clearTimeout(timelineResizeTimer);
 
-
-const lane =
-document.querySelector(".sj-lane");
-
-
-
-const width =
-lane.offsetWidth;
-
-
-
-
-
-const positions=[
-
-width*.12,   // stop 1 - 2001
-width*.24,   // stop 2 - 2004
-width*.36,   // stop 3 - 2008
-width*.48,   // stop 4 - 2015
-width*.60,   // stop 5 - 2022
-width*.72,   // stop 6 - 2023
-width*.84,   // stop 7 - 2025
-width*.95    // stop 8 - 2026
-
-];
-
-
-
-
-
-
-
-stops.forEach((stop,index)=>{
-
-
-
-timeline.to(car,{
-
-
-
-x:positions[index] - (car.offsetWidth / 2),
-
-
-
-duration:2,
-
-
-
-ease:"power2.inOut",
-
-
-
-
-onStart:()=>{
-
-
-resetStops();
-
-
-stop.classList.add(
-"active"
-);
-
-
-
-},
-
-
-
-
-onComplete:()=>{
-
-
-stop.classList.add(
-"reached"
-);
-
-
-
-}
-
-
-
-
-})
-
-
-
-.to({},{
-
-
-duration:1.5
-
-
+    timelineResizeTimer = setTimeout(function () {
+        setTimelinePosition();
+    }, 250);
 });
-
-
-
-
-
-});
-
-
-
-
-
-
-
-timeline.to(car,{
-
-
-
-x:0,
-
-
-duration:3,
-
-
-ease:"power3.inOut",
-
-
-
-
-onStart:()=>{resetStops();
-
-
-
-}
-
-
-
-
-});
-
-
-
-
-}
-
-
-
-
-
-}
-
-
-
-
-
-
-
-
-
-createAnimation();
-
-
-
-
-
-
-
-
-ScrollTrigger.create({
-
-
-trigger:".sj-timeline",
-
-
-start:"top 70%",
-
-
-
-
-onEnter:()=>{
-
-
-timeline.restart();
-
-
-}
-
-
-
-});
-
-
-
-
-
-
-
-
-
-window.addEventListener(
-
-"resize",
-
-()=>{
-
-
-createAnimation();
-
-
-}
-
-);
 </script>
 </body>
 
