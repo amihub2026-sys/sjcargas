@@ -459,9 +459,7 @@ data-bs-slide="next">
                             for maximum safety, fuel savings, and smooth vehicle performance.
                         </p>
 
-                        <a class="text-secondary border-bottom" href="">
-                            Read More
-                        </a>
+                       
 
                     </div>
 
@@ -487,10 +485,7 @@ data-bs-slide="next">
                             retro fitment services with complete safety and reliability.
                         </p>
 
-                        <a class="text-secondary border-bottom" href="">
-                            Read More
-                        </a>
-
+                       
                     </div>
 
                 </div>
@@ -515,9 +510,7 @@ data-bs-slide="next">
                             compatible systems for better mileage, lower running cost, and cleaner driving.
                         </p>
 
-                        <a class="text-secondary border-bottom" href="">
-                            Read More
-                        </a>
+                        
 
                     </div>
 
@@ -544,7 +537,7 @@ data-bs-slide="next">
 
                     <img
                         class="position-absolute img-fluid w-100 h-100"
-                        src="img/sj 1.jpeg"
+                        src="img/about.png"
                         style="object-fit: cover;"
                         alt="SJ Car Gas">
 
@@ -1291,9 +1284,7 @@ Calculate Savings
                    <p class="testimonial-content">
                      spoke nicely, very friendly and casual. Everything is there. I’ve sent everything already, and he’ll do a good job and deliver it properly.
                     </p>
-                    <a href="#" class="read-more">
-Read More...
-</a>
+  
 
                 </div>
 
@@ -1315,9 +1306,7 @@ Read More...
                    <p class="testimonial-content">
                       my xcent car fitted with cng at this proper retrofitting centre with excellent service on time, cost of service is reasonable
                     </p>
-                    <a href="#" class="read-more">
-Read More...
-</a>
+
 
                 </div>
 
@@ -1342,9 +1331,7 @@ Read More...
                    <p class="testimonial-content">
                       I should appreciate  Mr.Nagarajan for their skill and experience in car gas conversion; Iam having a Tata Indica Xeta 2006 model and converted it to LPG long back, had a upturned complaint for years to together, no one turned in on in Madurai, finally I approached them , by seeing their online presence - And they made it, now Iam peacefully driving my car. Thank you so much !
                     </p>
-<a href="#" class="read-more">
-Read More...
-</a>
+
                 </div>
 
             </div>
@@ -1367,14 +1354,35 @@ Read More...
                    <p class="testimonial-content">
                       Installed a CNG kit for my ertiga at a reasonable price.The quality of fittings is amazing and Mr.Nagarajan is very humble and I get a solution for need.He will take care from fittings to endorsement.Hassle free service from SJ cars.
                     </p>
-                    <a href="#" class="read-more">
-Read More...
-</a>
+ 
 
                 </div>
 
             </div>
+    <!-- TESTIMONIAL 5 -->
+            <div class="testimonial-item text-center">
 
+               
+
+                <h5 class="mb-0">
+                    Abi
+                </h5>
+
+                <p>
+                    
+                </p>
+
+                <div class="testimonial-text bg-light text-center p-4">
+
+                   <p class="testimonial-content">
+    Very satisfied with SJ Car Gas service. Professional team, reasonable cost, and excellent after-sales support. 
+    My car performance is very smooth after the CNG installation.
+</p>
+
+
+                </div>
+
+            </div>
         </div>
 
     </div>
@@ -1669,15 +1677,15 @@ startCarSlider(
 [
 {
 src:"img/tourh3.png",
-scale:0.90
+scale:1
 },
 {
 src:"img/glanza.png",
-scale:1.90
+scale:1
 },
 {
 src:"img/amaze.png",
-scale:1.50
+scale:1
 }
 ]
 );
@@ -1689,7 +1697,7 @@ startCarSlider(
 [
 {
 src:"img/grand vitara.png",
-scale:0.90
+scale:1
 },
 {
 src:"img/ertiga.png",
@@ -1705,11 +1713,11 @@ startCarSlider(
 [
 {
 src:"img/rumion.png",
-scale:1.50
+scale:1
 },
 {
 src:"img/grand i10.png",
-scale:1.50
+scale:1
 }
 ]
 );
@@ -1782,11 +1790,11 @@ startMobileCarSlider(
     },
     {
         src:"img/glanza.png",
-        scale:2
+        scale:1.5
     },
     {
         src:"img/amaze.png",
-        scale:1.50
+        scale:1
     }
 ]
 );
@@ -1822,11 +1830,11 @@ startMobileCarSlider(
 [
     {
         src:"img/rumion.png",
-        scale:2
+        scale:1
     },
     {
         src:"img/grand i10.png",
-        scale:2
+        scale:1
     },
    
 ]
@@ -2076,6 +2084,117 @@ function toggleMenu(){
     }
 
 }
+$(document).ready(function () {
+
+    var testimonialCarousel = $('.testimonial-carousel');
+
+
+    testimonialCarousel.owlCarousel({
+
+        autoplay: true,
+
+        autoplayTimeout: 3000,
+
+        autoplayHoverPause: true,
+
+        loop: true,
+
+        margin: 30,
+
+        nav: false,
+
+        dots: true,
+
+        smartSpeed: 800,
+
+
+        responsive: {
+
+            0: {
+                items: 1
+            },
+
+            768: {
+                items: 2
+            },
+
+            1200: {
+                items: 3
+            }
+
+        }
+
+    });
+
+
+
+    /*
+       STOP AUTO SCROLL
+       When user touches review card
+    */
+
+    testimonialCarousel.on(
+        'touchstart',
+        '.testimonial-item',
+        function () {
+
+            testimonialCarousel.trigger(
+                'stop.owl.autoplay'
+            );
+
+        }
+    );
+
+
+
+    /*
+       CONTINUE AUTO SCROLL
+       After user releases touch
+    */
+
+    testimonialCarousel.on(
+        'touchend',
+        '.testimonial-item',
+        function () {
+
+            testimonialCarousel.trigger(
+                'play.owl.autoplay'
+            );
+
+        }
+    );
+
+
+
+    /*
+       Desktop hover pause
+    */
+
+    testimonialCarousel.on(
+        'mouseenter',
+        function () {
+
+            testimonialCarousel.trigger(
+                'stop.owl.autoplay'
+            );
+
+        }
+    );
+
+
+    testimonialCarousel.on(
+        'mouseleave',
+        function () {
+
+            testimonialCarousel.trigger(
+                'play.owl.autoplay'
+            );
+
+        }
+    );
+
+
+});
 
 </script>
 </body>

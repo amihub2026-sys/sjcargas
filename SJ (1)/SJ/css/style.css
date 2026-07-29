@@ -204,6 +204,11 @@
 
 
 /*** Service ***/
+.service .nav {
+    gap: 80px;
+
+}
+
 .service .nav .nav-link {
     background: var(--light);
     transition: .5s;
@@ -2383,6 +2388,7 @@
 
 .sj-service-nav .nav-link {
     min-height: 96px;
+
     margin-bottom: 0 !important;
     padding: 18px 20px !important;
     border: none !important;
@@ -3809,7 +3815,7 @@ max-width:100px;
 }
 .testimonial-content {
     display:-webkit-box;
-    -webkit-line-clamp:3;
+    
     -webkit-box-orient:vertical;
     overflow:hidden;
 }
@@ -4169,8 +4175,7 @@ max-width:100px;
 .testimonial-content{
 
     display:-webkit-box;
-    -webkit-line-clamp:3;
-    -webkit-box-orient:vertical;
+    
     overflow:hidden;
 
 }
@@ -4740,5 +4745,33 @@ body.gallery-modal-open {
         font-size:14px;
 
     }
+
+}
+.testimonial-carousel{
+    touch-action: pan-y;
+}
+
+
+.testimonial-item{
+
+    cursor:pointer;
+
+    user-select:none;
+
+    -webkit-user-select:none;
+
+}
+
+
+.testimonial-text{
+
+    transition:0.3s ease;
+
+}
+
+
+.testimonial-item:hover .testimonial-text{
+
+    transform:translateY(-5px);
 
 }
