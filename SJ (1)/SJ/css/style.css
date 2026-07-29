@@ -933,953 +933,797 @@
    SJ CAR GAS TIMELINE
 ===================================== */
 
+/* =====================================
+   SJ CAR GAS TIMELINE
+===================================== */
 
-.sj-timeline{
-
-    width:100%;
-    background:#fff;
-    padding:90px 40px;
-    overflow:hidden;
-    font-family:Arial,sans-serif;
-    position:relative;
-
+.sj-timeline {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    padding: 90px 40px;
+    background: #ffffff;
+    font-family: Arial, sans-serif;
 }
 
 
+/* =====================================
+   HEADER
+===================================== */
 
+.sj-head {
+    margin-bottom: 80px;
+    padding: 0 20px;
+    text-align: center;
+}
 
-/* HEADER */
+.sj-head span {
+    color: #e51d2a;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
 
-.sj-head{
+.sj-head h1 {
+    margin: 15px 0;
+    color: #111111;
+    font-size: 52px;
+    font-weight: 700;
+}
 
-    text-align:center;
-    margin-bottom:80px;
+.sj-head h1 b {
+    color: #e51d2a;
+}
 
+.sj-head p {
+    margin: 0;
+    color: #666666;
+    font-size: 18px;
 }
 
 
-.sj-head span{
+/* =====================================
+   ROAD WRAPPER
+===================================== */
 
-    color:#e51d2a;
-    font-weight:700;
-    font-size:15px;
-
+.sj-road-wrap {
+    width: 100%;
+    height: 620px;
+    position: relative;
+    margin-top: -100px;
 }
 
 
-.sj-head h1{
+/* =====================================
+   ROAD CONTAINER
+===================================== */
 
-    font-size:52px;
-    color:#111;
-    margin:15px 0;
-
+.sj-road {
+    position: absolute;
+    top: 330px;
+    left: 0;
+    width: 100%;
 }
 
 
-.sj-head h1 b{
+/* =====================================
+   GREY ROAD
+===================================== */
 
-    color:#e51d2a;
-
+.sj-timeline {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    padding: 90px 0;
+    background: #ffffff;
 }
 
 
-.sj-head p{
+/* Keep only the heading content inside spacing */
 
-    color:#666;
-    font-size:18px;
-
+.sj-head {
+    padding: 0 40px;
 }
 
 
+/* Full-width road area */
 
-
-/* ROAD WRAPPER */
-
-
-.sj-road-wrap{
-
-    width:100%;
-    height:620px;
-    position:relative;
-
+.sj-road-wrap {
+    width: 100%;
+    height: 620px;
+    position: relative;
 }
 
 
+/* Make road use full viewport width */
 
+.sj-road {
+    position: absolute;
+    top: 330px;
+    left: 50%;
 
+    width: 100vw;
 
-/* ROAD */
-
-
-.sj-road{
-
-    position:absolute;
-
-    width:100%;
-
-    top:330px;
-
-    left:0;
-
+    transform: translateX(-50%);
 }
 
 
+/* Full-width road */
 
-.sj-lane{
+.sj-lane {
+    width: 100%;
+    height: 90px;
+    position: relative;
+    overflow: hidden;
 
-    width:100%;
-    height:90px;
+    border-radius: 0;
 
-    background:#222;
+    background: #686d72;
 
-    border-radius:60px;
-
-    position:relative;
-
+    box-shadow:
+        inset 0 5px 12px rgba(255, 255, 255, 0.12),
+        inset 0 -8px 15px rgba(0, 0, 0, 0.18),
+        0 15px 35px rgba(0, 0, 0, 0.15);
 }
 
 
+/* Road centre markings */
 
-.sj-lane::after{
+.sj-lane::after {
+    content: "";
+    position: absolute;
+    top: 42px;
+    left: 0;
 
+    width: 100%;
+    height: 6px;
 
-    content:"";
-
-    position:absolute;
-
-    top:42px;
-
-    left:0;
-
-    width:100%;
-
-    height:6px;
-
-
-    background:
-
-    repeating-linear-gradient(
-
+    background: repeating-linear-gradient(
         90deg,
-
-        #fff 0px,
-
-        #fff 65px,
-
+        #ffffff 0,
+        #ffffff 65px,
         transparent 65px,
-
         transparent 125px
-
     );
 
-
+    opacity: 0.95;
 }
 
 
+/* =====================================
+   MOVING CAR
+===================================== */
 
+.sj-car {
+    position: absolute;
+    top: 3px;
+    left: 0;
+    z-index: 30;
+    will-change: transform;
+    transform-origin: center bottom;
+}
 
+.sj-car img {
+    width: 105px;
+    height: auto;
+    display: block;
+    object-fit: contain;
 
+    /*
+      Increase this value if the PNG has
+      transparent space below the car.
+    */
+    transform: translateY(4px);
 
-
-/* CAR */
-
-
-.sj-car{
-
-    position:absolute;
-
-    left:0;
-
-    top:-60px;
-
-    z-index:20;
-
-    will-change:transform;
-
+    user-select: none;
+    pointer-events: none;
+    -webkit-user-drag: none;
 }
 
 
+/* =====================================
+   TIMELINE STOPS
+===================================== */
 
-.sj-car img{
+.sj-stop {
+    position: absolute;
+    top: -240px;
+    z-index: 10;
 
-    width:105px;
+    width: 180px;
 
-    display:block;
+    text-align: center;
 
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateX(-50%);
+
+    transition:
+        opacity 0.5s ease,
+        visibility 0.5s ease;
 }
 
 
+/* Stop positions */
 
-
-
-
-
-/* STOP */
-
-
-.sj-stop{
-
-
-    position:absolute;
-
-    top:-240px;
-
-    transform:translateX(-50%);
-
-    text-align:center;
-
-    opacity:0;
-
-    transition:.5s;
-
-    z-index:10;
-
-
+.stop1 {
+    left: 12%;
 }
 
-
-
-
-/* POSITIONS */
-
-
-.stop1{
-
-    left:12%;
-
+.stop2 {
+    left: 24%;
 }
 
-
-.stop2{
-
-    left:24%;
-
+.stop3 {
+    left: 36%;
 }
 
-
-.stop3{
-
-    left:36%;
-
+.stop4 {
+    left: 48%;
 }
 
-
-.stop4{
-
-    left:48%;
-
+.stop5 {
+    left: 60%;
 }
 
-
-.stop5{
-
-    left:60%;
-
+.stop6 {
+    left: 72%;
 }
 
-
-.stop6{
-
-    left:72%;
-
-}
-.stop7{
-
-    left:84%;
-
-}
-.stop8{
-
-    left:95%;
-
+.stop7 {
+    left: 84%;
 }
 
+.stop8 {
+    left: 95%;
+}
 
-
-
-
-
+/* Show active timeline stops */
 
 .sj-stop.active,
-.sj-stop.reached{
-
-    opacity:1;
-
+.sj-stop.reached {
+    opacity: 1;
+    visibility: visible;
 }
 
 
+/* =====================================
+   YEAR BOX
+===================================== */
 
+.sj-year {
+    min-width: 120px;
+    position: relative;
+    display: inline-block;
 
+    padding: 12px 22px;
 
+    border-radius: 8px;
 
+    background: #111111;
+    color: #ffffff;
 
-/* YEAR */
+    font-size: 25px;
+    font-weight: 700;
 
+    box-shadow: 0 0 25px rgba(229, 29, 42, 0.35);
 
-.sj-year{
+    transition:
+        background 0.4s ease,
+        box-shadow 0.4s ease,
+        transform 0.4s ease;
+}
 
-
-    min-width:120px;
-
-    padding:12px 22px;
-
-    background:#111;
-
-    color:#fff;
-
-    font-size:25px;
-
-    font-weight:700;
-
-    border-radius:8px;
-
-
-    box-shadow:
-
-    0 0 25px rgba(229,29,42,.5);
-
-
+.sj-stop.reached .sj-year {
+    background: #e51d2a;
+    box-shadow: 0 0 30px rgba(229, 29, 42, 0.65);
+    transform: translateY(-4px);
 }
 
 
+/* =====================================
+   LINE FROM YEAR TO ROAD
+===================================== */
 
+.sj-year::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
 
-.sj-stop.reached .sj-year{
+    width: 3px;
+    height: 120px;
 
+    background: #4e5357;
 
-    background:#e51d2a;
-
-    box-shadow:
-
-    0 0 35px #e51d2a;
-
-
+    transform: translateX(-50%);
 }
 
 
+/* =====================================
+   TIMELINE PIN
+===================================== */
 
+.sj-pin {
+    width: 24px;
+    height: 24px;
 
+    margin: 120px auto 0;
 
+    border: 7px solid #e51d2a;
+    border-radius: 50%;
 
+    background: #ffffff;
 
+    box-sizing: border-box;
 
-/* LINE FROM YEAR */
+    transition:
+        background 0.4s ease,
+        transform 0.4s ease,
+        box-shadow 0.4s ease;
+}
 
-
-.sj-year::after{
-
-
-    content:"";
-
-    position:absolute;
-
-    height:120px;
-
-    width:3px;
-
-    background:#222;
-
-    left:50%;
-
-    top:100%;
-
-    transform:translateX(-50%);
-
-
+.sj-stop.reached .sj-pin {
+    background: #e51d2a;
+    transform: scale(1.35);
+    box-shadow: 0 0 18px rgba(229, 29, 42, 0.65);
 }
 
 
+/* =====================================
+   TIMELINE CONTENT CARD
+===================================== */
 
+.sj-card {
+    position: absolute;
+    top: 310px;
+    left: 50%;
 
+    width: 170px;
+    min-height: 110px;
 
+    padding: 18px 14px;
 
+    box-sizing: border-box;
 
-/* PIN */
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
 
+    background: #ffffff;
 
-.sj-pin{
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
 
-
-    width:24px;
-
-    height:24px;
-
-    background:white;
-
-    border-radius:50%;
-
-    border:7px solid #e51d2a;
-
-    margin:120px auto 0;
-
-
-    transition:.4s;
-
-
-}
-
-
-
-.sj-stop.reached .sj-pin{
-
-
-    background:#e51d2a;
-
-    transform:scale(1.35);
-
-
-}
-
-
-
-
-
-
-
-
-/* CARD */
-
-
-.sj-card{
-
-
-    position:absolute;
-
-
-    top:310px;
-
-
-    left:50%;
-
+    opacity: 0;
 
     transform:
+        translateX(-50%)
+        translateY(40px);
 
-    translateX(-50%)
-
-    translateY(40px);
-
-
-   width:160px;
-    min-height:75px;
-
-
-    background:white;
-
-
-    padding:18px 10px;
-
-
-    border-radius:12px;
-
-
-    box-shadow:
-
-    0 15px 35px rgba(0,0,0,.15);
-
-
-
-    opacity:0;
-
-
-    transition:.5s;
-
-
+    transition:
+        opacity 0.5s ease,
+        transform 0.5s ease;
 }
 
-
-
-.sj-stop.reached .sj-card{
-
-
-    opacity:1;
-
+.sj-stop.reached .sj-card {
+    opacity: 1;
 
     transform:
+        translateX(-50%)
+        translateY(0);
+}
 
-    translateX(-50%)
+.sj-card h3 {
+    margin: 0 0 10px;
 
-    translateY(0);
+    color: #e51d2a;
+
+    font-size: 18px;
+}
+
+.sj-card p {
+    margin: 0;
+
+    color: #555555;
+
+    font-size: 14px;
+    line-height: 1.5;
+}
 
 
+/* =====================================
+   TABLET
+===================================== */
+
+@media (max-width: 1100px) {
+
+    .sj-timeline {
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+
+    .sj-head h1 {
+        font-size: 44px;
+    }
+
+    .sj-stop {
+        width: 155px;
+    }
+
+    .sj-card {
+        width: 150px;
+        padding: 16px 10px;
+    }
+
+    .sj-card p {
+        font-size: 13px;
+    }
+
+    .sj-year {
+        min-width: 100px;
+        padding: 11px 16px;
+        font-size: 22px;
+    }
+
+    .sj-car img {
+        width: 95px;
+    }
+}
+
+
+/* =====================================
+   MOBILE HORIZONTAL TIMELINE
+===================================== */
+
+@media (max-width: 768px) {
+
+    .sj-timeline {
+        width: 100%;
+        padding: 45px 0 80px;
+        overflow: hidden;
+    }
+
+
+    /* HEADER */
+
+    .sj-head {
+        margin-bottom: 35px;
+        padding: 0 20px;
+    }
+
+    .sj-head span {
+        font-size: 13px;
+    }
+
+    .sj-head h1 {
+        margin: 10px 0;
+        font-size: 35px;
+        line-height: 1.2;
+    }
+
+    .sj-head p {
+        font-size: 15px;
+        line-height: 1.6;
+    }
+
+
+    /* MOBILE VIEWPORT */
+
+    .sj-road-wrap {
+        position: relative;
+
+        width: 100%;
+        height: 700px;
+
+        overflow: hidden;
+    }
+
+
+    /* LARGE MOVING ROAD */
+
+    .sj-road {
+        position: absolute;
+
+        top: 0;
+        left: 0;
+
+        width: 820px;
+        height: 650px;
+
+        /*
+          Important: remove desktop centering.
+          GSAP controls this transform.
+        */
+        transform: none;
+
+        will-change: transform;
+    }
+
+
+    /* GREY ROAD */
+
+    .sj-lane {
+        position: absolute;
+
+        top: 300px;
+        left: 0;
+
+        width: 820px;
+        height: 90px;
+
+        border-radius: 0;
+
+        background: #686d72;
+
+        box-shadow:
+            inset 0 5px 12px rgba(255, 255, 255, 0.12),
+            inset 0 -8px 15px rgba(0, 0, 0, 0.18),
+            0 15px 35px rgba(0, 0, 0, 0.15);
+    }
+
+    .sj-lane::after {
+        content: "";
+
+        position: absolute;
+
+        top: 42px;
+        left: 0;
+
+        width: 100%;
+        height: 5px;
+
+        background: repeating-linear-gradient(
+            90deg,
+            #ffffff 0,
+            #ffffff 45px,
+            transparent 45px,
+            transparent 85px
+        );
+    }
+
+
+    /* CAR ON ROAD */
+
+   .sj-car {
+    position: absolute;
+
+    top: 295px;
+    left: 50%;
+
+    z-index: 100;
+
+    transform: translateX(-50%);
+
+    cursor: pointer;
+    pointer-events: auto;
+    touch-action: manipulation;
+
+    will-change: transform;
+}
+
+.sj-car img {
+    width: 95px;
+    height: auto;
+    display: block;
+
+    transform: translateY(5px);
+
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+    /* TIMELINE STOPS */
+
+    .sj-stop {
+        position: absolute;
+
+        top: 70px;
+
+        width: 160px;
+        height: 520px;
+
+        text-align: center;
+
+        opacity: 0;
+        visibility: hidden;
+
+        transform: translateX(-50%);
+
+        z-index: 10;
+
+        transition:
+            opacity 0.4s ease,
+            visibility 0.4s ease;
+    }
+
+
+    /* MATCHES 820PX ROAD WIDTH */
+
+    .stop1 {
+        left: 98px;
+    }
+
+    .stop2 {
+        left: 197px;
+    }
+
+    .stop3 {
+        left: 295px;
+    }
+
+    .stop4 {
+        left: 394px;
+    }
+
+    .stop5 {
+        left: 492px;
+    }
+
+    .stop6 {
+        left: 590px;
+    }
+
+    .stop7 {
+        left: 689px;
+    }
+
+    .stop8 {
+        left: 779px;
+    }
+
+
+    /* SHOW CURRENT STOP */
+
+    .sj-stop.active,
+    .sj-stop.reached {
+        opacity: 1;
+        visibility: visible;
+    }
+
+
+    /* YEAR */
+
+    .sj-year {
+        position: relative;
+
+        min-width: 100px;
+
+        display: inline-block;
+
+        padding: 11px 16px;
+
+        background: #111111;
+        color: #ffffff;
+
+        border-radius: 8px;
+
+        font-size: 21px;
+        font-weight: 700;
+
+        box-shadow:
+            0 0 20px rgba(229, 29, 42, 0.35);
+    }
+
+    .sj-stop.active .sj-year,
+    .sj-stop.reached .sj-year {
+        background: #e51d2a;
+
+        box-shadow:
+            0 0 25px rgba(229, 29, 42, 0.55);
+    }
+
+
+    /* VERTICAL LINE */
+
+    .sj-year::after {
+        content: "";
+
+        position: absolute;
+
+        top: 100%;
+        left: 50%;
+
+        width: 3px;
+        height: 105px;
+
+        background: #4e5357;
+
+        transform: translateX(-50%);
+    }
+
+
+    /* PIN */
+
+    .sj-pin {
+        width: 23px;
+        height: 23px;
+
+        margin: 105px auto 0;
+
+        border: 7px solid #e51d2a;
+        border-radius: 50%;
+
+        background: #ffffff;
+
+        box-sizing: border-box;
+
+        transition:
+            transform 0.4s ease,
+            background 0.4s ease;
+    }
+
+    .sj-stop.active .sj-pin,
+    .sj-stop.reached .sj-pin {
+        background: #e51d2a;
+        transform: scale(1.25);
+    }
+
+
+    /* CARD BELOW ROAD */
+
+    .sj-card {
+        position: absolute;
+
+        top: 320px;
+        left: 50%;
+
+        width: 170px;
+        min-height: 135px;
+
+        padding: 20px 15px;
+
+        box-sizing: border-box;
+
+        border-radius: 14px;
+
+        background: #ffffff;
+
+        box-shadow:
+            0 15px 35px rgba(0, 0, 0, 0.18);
+
+        opacity: 0;
+        visibility: hidden;
+
+        transform:
+            translateX(-50%)
+            translateY(35px);
+
+        transition:
+            opacity 0.45s ease,
+            visibility 0.45s ease,
+            transform 0.45s ease;
+    }
+
+
+    /*
+      Show card while car is approaching
+      and after car reaches the stop.
+    */
+
+    .sj-stop.active .sj-card,
+    .sj-stop.reached .sj-card {
+        opacity: 1;
+        visibility: visible;
+
+        transform:
+            translateX(-50%)
+            translateY(0);
+    }
+
+    .sj-card p {
+        margin: 0;
+
+        color: #555555;
+
+        font-size: 14px;
+        line-height: 1.5;
+    }
 }
 
 
 
 
-
-.sj-card h3{
-
-
-    color:#e51d2a;
-
-    font-size:18px;
-
-    margin:0 0 10px;
-
-}
-
-
-
-.sj-card p{
-
-
-    color:#555;
-
-    font-size:14px;
-
-    line-height:1.5;
-
-    margin:0;
-
-}
-
-/* =========================
- MOBILE HORIZONTAL TIMELINE
-========================= */
-
-@media(max-width:768px){
-
-
-.sj-timeline{
-
-    padding:40px 0 100px;
-
-    overflow:hidden;
-
-}
-
-
-
-
-
-.sj-head{
-
-    padding:0 20px;
-
-    margin-bottom:40px;
-
-}
-
-
-
-.sj-head h1{
-
-    font-size:36px;
-
-}
-
-
-
-
-
-
-/* =====================
-      VIEW AREA
-===================== */
-
-
-.sj-road-wrap{
-
-
-    width:100%;
-
-
-    height:720px;
-
-
-    overflow:hidden;
-
-
-    position:relative;
-
-
-}
-
-
-
-
-
-
-
-/* =====================
-      BIG ROAD
-===================== */
-
-
-
-@media(max-width:768px){
-
-.sj-road-wrap{
-
-    width:100%;
-    overflow:hidden;
-    position:relative;
-
-}
-
-
-.sj-road{
-
-    width:100%;
-    height:650px;
-    left:0;
-    top:0;
-
-}
-
-
-.sj-lane{
-
-    width:100%;
-    height:90px;
-    left:0;
-    top:300px;
-
-}
-
-
-.stop1{ left:90px!important; }
-.stop2{ left:180px!important; }
-.stop3{ left:240px!important; }
-.stop4{ left:320px!important; }
-.stop5{ left:450px!important; }
-.stop6{ left:540px!important; }
-.stop7{ left:630px!important; }
-.stop8{ left:720px!important; }
-
-}
-
-
-
-
-
-
-
-
-
-/* =====================
-          CAR
-===================== */
-
-
-.sj-car{
-
-
-    position:absolute;
-
-
-    left:60px;
-
-
-    top:245px;
-
-
-    z-index:20;
-
-transform-origin:center;
-
-
-
-
-}
-
-
-
-
-
-.sj-car img{
-
-
-    width:125px;
-
-
-    display:block;
-
-
-}
-
-
-
-
-
-
-
-
-
-/* =====================
-          POINTS
-===================== */
-
-
-.sj-stop{
-
-
-    position:absolute!important;
-
-
-    top:70px;
-
-
-    width:100px;
-
-
-    height:500px;
-
-
-    opacity:0;
-
-
-    transform:translateX(-50%);
-
-
-}
-
-
-
-
-
-
-
-.stop1{
-
-    left:90px!important;
-
-}
-
-
-.stop2{
-
-    left:180px!important;
-
-}
-
-
-.stop3{
-
-    left:270px!important;
-
-}
-
-
-.stop4{
-
-    left:320px!important;
-
-}
-
-
-.stop5{
-
-    left:450px!important;
-
-}
-
-
-
-
-.stop6{ left:540px!important; }
-.stop7{ left:630px!important; }
-.stop8{ left:720px!important; }
-
-
-
-
-
-
-
-/* =====================
-          YEAR
-===================== */
-
-
-.sj-year{
-
-
-    min-width:110px;
-
-
-    padding:12px 18px;
-
-
-    font-size:22px;
-
-
-    margin:auto;
-
-
-}
-
-
-
-
-.sj-year::after{
-
-    content:"";
-
-    position:absolute;
-
-    height:100px;   /* mobile line height */
-
-    width:3px;
-
-    background:#222;
-
-    left:50%;
-
-    top:35%;
-
-    transform:translateX(-50%);
-
-}
-
-
-
-
-
-
-
-/* PIN */
-
-
-.sj-pin{
-
-
-    margin-top:110px;
-
-
-}
-
-
-
-
-
-
-
-
-
-/* =====================
-          CARD
-===================== */
-
-
-.sj-card{
-
-
-    position:absolute;
-
-
-    top:320px;
-
-
-    left:90px!important;
-
-
-    width:160px;
-
-
-    min-height:140px;
-
-
-    padding:22px 18px;
-
-
-    box-sizing:border-box;
-
-
-    background:#fff;
-
-
-    border-radius:14px;
-
-
-    box-shadow:
-
-
-    0 15px 35px rgba(0,0,0,.15);
-
-
-
-    transform:
-
-
-    translateX(-50%)
-
-    translateY(50px);
-
-
-
-}
-
-
-
-
-.sj-card p{
-
-
-    font-size:15px;
-    
-
-}
-
-
-
-
-
-
-
-
-.sj-stop.reached .sj-card{
-
-
-    opacity:1;
-
-
-    transform:
-
-
-    translateX(-50%)
-
-    translateY(0);
-
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.sj-stop.reached.stop6 .sj-card{
-
-
-    transform:
-
-
-    translateX(-50%)
-
-    translateY(0);
-
-
-
-}
-
-
-
-
-}
 .sj-why-section {
   position: relative;
   padding: 80px 0;
@@ -4348,71 +4192,553 @@ max-width:100px;
     cursor:pointer;
 
 }
-@media(max-width:768px){
 
-.sj-timeline{
-    overflow:hidden;
+/* ================================
+   GALLERY SECTION
+================================ */
+
+.gallery-section {
+  position: relative;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.gallery-section h1 {
+  font-weight: 700;
+  color: #111111;
+}
+
+
+/* ================================
+   GALLERY SLIDER
+================================ */
+
+.technician-slider {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: 15px 0;
+}
+
+/* Optional side fade effect */
+.technician-slider::before,
+.technician-slider::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.technician-slider::before {
+  left: 0;
+  background: linear-gradient(
+    to right,
+    #ffffff,
+    transparent
+  );
+}
+
+.technician-slider::after {
+  right: 0;
+  background: linear-gradient(
+    to left,
+    #ffffff,
+    transparent
+  );
+}
+
+
+/* ================================
+   MOVING TRACK
+================================ */
+
+.technician-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  gap: 20px;
+
+  animation-name: galleryScroll;
+  animation-duration: 55s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+
+  will-change: transform;
+}
+
+/*
+Stops the complete moving track when the
+mouse touches or hovers over any image.
+*/
+.technician-track:hover {
+  animation-play-state: paused;
+}
+
+/*
+JavaScript adds this class while touching
+an image on mobile devices.
+*/
+.technician-track.gallery-paused {
+  animation-play-state: paused;
+}
+
+
+/* ================================
+   INDIVIDUAL IMAGE
+================================ */
+
+.technician-slide {
+  flex: 0 0 320px;
+  width: 320px;
+  height: 230px;
+  overflow: hidden;
+  border-radius: 14px;
+  background: #eeeeee;
+  cursor: pointer;
+
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.14);
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.technician-slide img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+
+  transition: transform 0.5s ease;
+
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.technician-slide:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.22);
+}
+
+.technician-slide:hover img {
+  transform: scale(1.08);
+}
+
+
+/* ================================
+   INFINITE LOOP ANIMATION
+================================ */
+
+/*
+Because the second image group is an exact
+duplicate, the track moves only half its width.
+*/
+@keyframes galleryScroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(calc(-50% - 10px));
+  }
+}
+
+
+/* ================================
+   IMAGE POPUP MODAL
+================================ */
+
+.gallery-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 30px;
+
+  background: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+}
+
+.gallery-modal.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.gallery-modal-content {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+
+  transform: scale(0.88);
+  transition: transform 0.35s ease;
+}
+
+.gallery-modal.active .gallery-modal-content {
+  transform: scale(1);
+}
+
+.gallery-modal-content img {
+  display: block;
+
+  max-width: 95%;
+  max-height: 90vh;
+
+  width: auto;
+  height: auto;
+
+  object-fit: contain;
+
+  border-radius: 10px;
+  background: #ffffff;
+
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5);
+}
+
+
+/* Modal close button */
+
+.gallery-modal-close {
+  position: absolute;
+  top: 20px;
+  right: 28px;
+  z-index: 10;
+
+  width: 50px;
+  height: 50px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+
+  font-size: 42px;
+  font-weight: 300;
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease;
+}
+
+.gallery-modal-close:hover {
+  background: #ffffff;
+  color: #111111;
+  transform: rotate(90deg);
+}
+
+
+/* Stop body scrolling when popup is open */
+
+body.gallery-modal-open {
+  overflow: hidden;
+}
+
+
+/* ================================
+   TABLET RESPONSIVE
+================================ */
+
+@media (max-width: 991px) {
+  .technician-track {
+    gap: 16px;
+    animation-duration: 45s;
+  }
+
+  .technician-slide {
+    flex-basis: 280px;
+    width: 280px;
+    height: 205px;
+  }
+
+  .technician-slider::before,
+  .technician-slider::after {
+    width: 45px;
+  }
+
+  @keyframes galleryScroll {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(calc(-50% - 8px));
+    }
+  }
+}
+
+
+/* ================================
+   MOBILE RESPONSIVE
+================================ */
+
+@media (max-width: 576px) {
+  .gallery-section {
+    padding-top: 45px !important;
+    padding-bottom: 45px !important;
+  }
+
+  .gallery-section h1 {
+    font-size: 28px;
+    margin-bottom: 30px !important;
+  }
+
+  .technician-slider {
+    padding: 10px 0;
+  }
+
+  .technician-track {
+    gap: 12px;
+    animation-duration: 38s;
+  }
+
+  .technician-slide {
+    flex-basis: 250px;
+    width: 250px;
+    height: 185px;
+    border-radius: 10px;
+  }
+
+  .technician-slider::before,
+  .technician-slider::after {
+    width: 20px;
+  }
+
+  .gallery-modal {
+    padding: 15px;
+  }
+
+  .gallery-modal-content img {
+    max-width: 100%;
+    max-height: 82vh;
+    border-radius: 7px;
+  }
+
+  .gallery-modal-close {
+    top: 12px;
+    right: 12px;
+
+    width: 44px;
+    height: 44px;
+
+    font-size: 36px;
+  }
+
+  @keyframes galleryScroll {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(calc(-50% - 6px));
+    }
+  }
+}
+
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .technician-track {
+    animation-play-state: paused;
+  }
+}
+.gallery-note{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:18px;
+
+    margin:0 auto 45px;
     width:100%;
 }
 
+.gallery-line{
+    width:80px;
+    height:1px;
+    background:linear-gradient(to right,transparent,#bdbdbd,transparent);
+}
 
-.sj-road-wrap{
+.gallery-note p{
+    margin:0;
 
-    width:100vw;
-    max-width:100%;
-    height:720px;
-    overflow:hidden;
+    font-size:15px;
+    font-weight:400;
+    letter-spacing:4px;
+    text-transform:uppercase;
+
+    color:black;
+    font-family:"Cormorant Garamond", serif;
+    font-style:italic;
+
     position:relative;
+}
+
+.gallery-note p::before{
+    content:"✦";
+    color:#c79a38;
+    margin-right:10px;
+}
+
+.gallery-note p::after{
+    content:"✦";
+    color:#c79a38;
+    margin-left:10px;
+}
+
+@media(max-width:768px){
+
+.gallery-line{
+    width:40px;
+}
+
+.gallery-note p{
+    font-size:12px;
+    letter-spacing:2px;
+}
+
+}
+.sj-start{
+    position:absolute;
+    left:20px;
+    top:0;
+    z-index:5;
+}
+
+.sj-flag{
+    width:45px;
+    height:auto;
+}
+
+.sj-start-label{
+    margin-top:8px;
+    font-weight:700;
+    text-align:center;
+}
+.touch-car-hint{
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+
+    width:fit-content;
+
+    margin:0 auto 45px;
+
+    padding:12px 28px;
+
+    background:rgba(255,255,255,0.8);
+
+    border:1px solid rgba(229,29,42,0.15);
+
+    border-radius:50px;
+
+    color:#444;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    letter-spacing:1px;
+
+    text-transform:uppercase;
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,0.08);
+
+    backdrop-filter:blur(10px);
+
+    animation:hintFloat 2s ease-in-out infinite;
+    margin-top: -100px;
 
 }
 
-.sj-road{
 
-    transform-origin:left center;
+.touch-icon{
 
-}
+    width:32px;
+    height:32px;
 
-html,body{
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-    overflow-x:hidden !important;
+    background:#e51d2a;
 
-}
+    color:white;
 
+    border-radius:50%;
 
-.sj-timeline{
-
-    overflow:hidden !important;
-
-}
-/* reduce mobile road size */
-
-.sj-lane{
-
-    width:900px;
+    font-size:16px;
 
 }
 
 
-/* move stops inside view */
+@keyframes hintFloat{
 
-.sj-stop{
+    0%,100%{
+        transform:translateY(0);
+    }
 
-    transform:scale(0.85);
-
-}
-
-
-
-
-
-.sj-year{
-
-    font-size:18px;
-
-    padding:8px 18px;
+    50%{
+        transform:translateY(-5px);
+    }
 
 }
 
 
-}
 
+@media(max-width:768px){
+
+    .touch-car-hint{
+
+        margin-bottom:30px;
+
+        padding:10px 18px;
+
+        font-size:11px;
+
+        letter-spacing:.8px;
+
+    }
+
+
+    .touch-icon{
+
+        width:28px;
+
+        height:28px;
+
+        font-size:14px;
+
+    }
+
+}
