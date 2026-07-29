@@ -1098,33 +1098,44 @@
 /* =====================================
    MOVING CAR
 ===================================== */
-
 .sj-car {
-    position: absolute;
-    top: 3px;
-    left: 0;
-    z-index: 30;
-    will-change: transform;
-    transform-origin: center bottom;
+
+    position:absolute;
+
+    top:325px;   /* move car onto road */
+
+    left:10px;
+
+    z-index:100;
+
+    will-change:transform;
+
+    transform-origin:center bottom;
+
+    cursor:pointer;
+
 }
+
 
 .sj-car img {
-    width: 105px;
-    height: auto;
-    display: block;
-    object-fit: contain;
 
-    /*
-      Increase this value if the PNG has
-      transparent space below the car.
-    */
-    transform: translateY(4px);
+    width:105px;
 
-    user-select: none;
-    pointer-events: none;
-    -webkit-user-drag: none;
+    height:auto;
+
+    display:block;
+
+    object-fit:contain;
+
+    transform:translateY(0);
+
+    user-select:none;
+
+    pointer-events:none;
+
+    -webkit-user-drag:none;
+
 }
-
 
 /* =====================================
    TIMELINE STOPS
@@ -1335,7 +1346,33 @@
     line-height: 1.5;
 }
 
+@media(max-width:768px){
 
+    /* Mobile default year background */
+    .sj-year{
+
+        background:#111 !important;
+        color:#fff;
+
+        transition:.4s ease;
+
+    }
+
+
+    /* Mobile reached stop year */
+    .sj-stop.reached .sj-year{
+
+        background:#e51d2a !important;
+
+        color:#fff;
+
+        box-shadow:
+        0 0 25px rgba(229,29,42,0.7);
+
+    }
+
+
+}
 /* =====================================
    TABLET
 ===================================== */
@@ -1432,7 +1469,7 @@
         top: 0;
         left: 0;
 
-        width: 820px;
+        width: 1000px;
         height: 650px;
 
         /*
@@ -1453,7 +1490,7 @@
         top: 300px;
         left: 0;
 
-        width: 820px;
+        width: 1000px;
         height: 90px;
 
         border-radius: 0;
@@ -1489,22 +1526,18 @@
 
     /* CAR ON ROAD */
 
-   .sj-car {
-    position: absolute;
+   .sj-car{
 
-    top: 295px;
-    left: 50%;
+        position:absolute;
 
-    z-index: 100;
+        left:50px !important;
 
-    transform: translateX(-50%);
+        top:300px;
 
-    cursor: pointer;
-    pointer-events: auto;
-    touch-action: manipulation;
+        z-index:9999;
 
-    will-change: transform;
-}
+    }
+
 
 .sj-car img {
     width: 95px;
@@ -1544,39 +1577,51 @@
 
 
     /* MATCHES 820PX ROAD WIDTH */
+@media(max-width:768px){
 
-    .stop1 {
-        left: 98px;
+    
+
+
+    .stop1{
+        left:120px !important;
     }
 
-    .stop2 {
-        left: 197px;
+
+    .stop2{
+        left:240px !important;
     }
 
-    .stop3 {
-        left: 295px;
+
+    .stop3{
+        left:360px !important;
     }
 
-    .stop4 {
-        left: 394px;
+
+    .stop4{
+        left:480px !important;
     }
 
-    .stop5 {
-        left: 492px;
+
+    .stop5{
+        left:600px !important;
     }
 
-    .stop6 {
-        left: 590px;
+
+    .stop6{
+        left:720px !important;
     }
 
-    .stop7 {
-        left: 689px;
+
+    .stop7{
+        left:840px !important;
     }
 
-    .stop8 {
-        left: 779px;
+
+    .stop8{
+        left:960px !important;
     }
 
+}
 
     /* SHOW CURRENT STOP */
 

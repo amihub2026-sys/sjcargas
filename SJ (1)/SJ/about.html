@@ -412,14 +412,6 @@ A journey of dedication, innovation and growth.
 
 <div class="sj-road-wrap">
 
-
-<div class="sj-road">
-
-
-<div class="sj-lane"></div>
-
-
-
 <!-- MOVING CAR -->
 
 <div class="sj-car">
@@ -427,6 +419,12 @@ A journey of dedication, innovation and growth.
 <img src="img/car.png">
 
 </div>
+<div class="sj-road">
+
+
+<div class="sj-lane"></div>
+
+
 
 
 
@@ -1146,39 +1144,64 @@ function moveToStop(index, animate = true) {
     isMoving = true;
 
     const duration = animate ? 1.5 : 0;
-if (isMobile()) {
+if(isMobile()) {
 
-    const viewportWidth = roadWrap.clientWidth;
-    const stopCenter = stop.offsetLeft;
+    const screenWidth = roadWrap.clientWidth;
 
-    /*
-      Allow positive movement for the first stops.
-      Do not clamp roadX to zero.
-    */
-    const roadX =
-        (viewportWidth / 2) - stopCenter;
+    const stopPosition = stop.offsetLeft;
 
-    car.classList.add("moving");
+
+    let roadX =
+        (screenWidth / 2) - stopPosition;
+
+
+    // Stop 1 is already at starting position
+    if(index === 0){
+
+        roadX = 0;
+
+    }
+
 
     gsap.to(road, {
+
         x: roadX,
-        duration: duration,
-        ease: "power2.inOut",
-        overwrite: true,
 
-        onComplete: function () {
+        duration:1.5,
 
-            car.classList.remove("moving");
+        ease:"power2.inOut",
+
+        onStart:function(){
+
+            resetStops();
+
+            stop.classList.add("active");
+
+        },
+
+
+        onComplete:function(){
 
             stop.classList.remove("active");
+
             stop.classList.add("reached");
 
-            isMoving = false;
+            isMoving=false;
+
         }
+
     });
 
-}
+}let roadX =
+    (screenWidth / 2) - stopPosition;
 
+
+// First stop should not move road backward
+if(index === 0){
+
+    roadX = 0;
+
+}
     else {
 
         const stopPosition = stop.offsetLeft;
@@ -1228,27 +1251,140 @@ function setTimelinePosition() {
         resetStops();
     }
 }
-if (car) {
+if(car){
 
-    car.style.cursor = "pointer";
-    car.style.pointerEvents = "auto";
+    car.style.cursor="pointer";
 
-    car.addEventListener("click", function (event) {
+    car.addEventListener("click",function(){
 
-        event.preventDefault();
-        event.stopPropagation();
+        console.log("CAR CLICK WORKING");
 
-        if (isMoving) {
-            return;
-        }
 
         currentStop =
-            (currentStop + 1) % stops.length;
+        (currentStop + 1) % stops.length;
 
-        moveToStop(currentStop, true);
+
+        console.log("Moving to stop:",currentStop);
+
+
+        if(window.innerWidth <= 768){
+
+            mobileMove(currentStop);
+
+        }
+        else{
+
+            desktopMove(currentStop);
+
+        }
+
+
     });
+
 }
 
+function mobileMove(index){
+
+    const stop = stops[index];
+
+
+    // Get stop center position
+    const stopCenter =
+        stop.offsetLeft + (stop.offsetWidth / 2);
+
+
+
+    // Current screen center where car is fixed
+    const carCenter =
+        window.innerWidth / 2;
+
+
+
+    // Move road until stop reaches car center
+    const roadX =
+        carCenter - stopCenter;
+
+
+    console.log("STOP CENTER:", stopCenter);
+    console.log("CAR CENTER:", carCenter);
+    console.log("ROAD MOVE:", roadX);
+
+gsap.to(road,{
+    x:roadX,
+
+    duration:3,
+
+    force3D:true,
+
+    ease:"power2.inOut",
+
+        onStart:function(){
+
+            resetStops();
+
+            stop.classList.add("active");
+
+        },
+
+
+        onComplete:function(){
+
+            stop.classList.remove("active");
+
+            stop.classList.add("reached");
+
+            isMoving=false;
+
+        }
+
+    });
+
+}
+function desktopMove(index){
+
+    const stop = stops[index];
+
+
+    const stopPosition =
+        stop.offsetLeft;
+
+
+    const carPosition =
+        stopPosition - (car.offsetWidth/2);
+
+
+
+    gsap.to(car,{
+
+        x:carPosition,
+
+        duration:1.5,
+
+        ease:"power2.inOut",
+
+
+        onStart:function(){
+
+            resetStops();
+
+            stop.classList.add("active");
+
+        },
+
+
+        onComplete:function(){
+
+            stop.classList.remove("active");
+
+            stop.classList.add("reached");
+
+            isMoving=false;
+
+        }
+
+    });
+
+}
 setTimelinePosition();
 
 let timelineResizeTimer;

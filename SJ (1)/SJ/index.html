@@ -902,7 +902,7 @@ data-bs-slide="next">
      
 
         <label>Current Fuel Type</label>
-      <input type="text" placeholder="Petrol">
+      <input type="text" value="Petrol" readonly>
 
         <label>Petrol Price /lit</label>
         <input type="number" id="petrolPrice" placeholder="₹">
@@ -927,7 +927,7 @@ Calculate Savings
      
 
         <label>Retrofit Fuel Type</label>
-      <input type="text" placeholder="LPG">
+      <input type="text" value="LPG" readonly>
 
         <label>LPG Price /lit</label>
         <input type="number" id="lpgPrice"placeholder="₹">
@@ -936,7 +936,7 @@ Calculate Savings
         <input type="number" id="lpgMileage" value="">
 
          <label>Daily Driving KM</label>
-<input type="number" id="dailyKm">
+<input type="number" id="dailyKm" placeholder=" Enter KM">
 
 
 
@@ -953,7 +953,7 @@ Calculate Savings
      
 
         <label>Retrofit Fuel Type</label>
-      <input type="text" placeholder="CNG">
+      <input type="text" value="CNG" readonly>
 
         <label>CNG Price /Kg</label>
         <input type="number" id="cngPrice" placeholder="₹">
@@ -968,7 +968,7 @@ Calculate Savings
 <input 
 type="number"
 id="cngDistance"
-placeholder="Enter distance">
+placeholder="Enter KM">
 
         <!-- <label>CNG Kit Installation Cost </label>
         <input type="number" id="cngKit"   value="0" placeholder="₹"> -->
@@ -1863,10 +1863,7 @@ function calculatePetrolSavings(){
         document.getElementById("petrolDistance").value
     );
 
-    let kit = Number(
-        document.getElementById("petrolKit").value
-    );
-
+   let kit = 0;
 
     if(!price || !mileage || !distance){
 
@@ -1890,10 +1887,7 @@ function calculatePetrolSavings(){
     ₹${cost.toFixed(2)}
     </p>
 
-    <p>
-    Kit Cost :
-    ₹${kit}
-    </p>
+   
 
     `;
 
@@ -1925,9 +1919,7 @@ function calculateLpgSavings(){
     );
 
 
-    let kit = Number(
-        document.getElementById("lpgKit").value
-    );
+   let kit = 0;
 
 
 
@@ -1957,10 +1949,7 @@ function calculateLpgSavings(){
     </p>
 
 
-    <p>
-    Kit Cost :
-    ₹${kit}
-    </p>
+   
 
 
     `;
@@ -1990,10 +1979,7 @@ let distance = Number(
 document.getElementById("cngDistance").value
 );
 
-    let kit = Number(
-        document.getElementById("cngKit").value
-    );
-
+    let kit = 0;
 
 
     if(!price || !mileage || !distance){
@@ -2022,47 +2008,15 @@ document.getElementById("cngDistance").value
     </p>
 
 
-    <p>
-    Kit Cost :
-    ₹${kit}
-    </p>
+   
 
 
     `;
 
 
 }
-document.querySelectorAll(".read-more").forEach(button=>{
 
 
-    button.addEventListener("click",function(e){
-
-        e.preventDefault();
-
-
-        let text =
-        this.previousElementSibling;
-
-
-        text.classList.toggle("show");
-
-
-        if(text.classList.contains("show")){
-
-            this.innerHTML="Read Less...";
-
-        }
-        else{
-
-            this.innerHTML="Read More...";
-
-        }
-
-
-    });
-
-
-});
 
 
 </script>
